@@ -10,7 +10,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = HCOuterRealms.MODID, version = Tags.VERSION, name = "HarvestCraft: Outer Realms", acceptedMinecraftVersions = "[1.7.10]")
+@Mod(modid = HCOuterRealms.MODID, version = Tags.VERSION, name = "HarvestCraft: Outer Realms", acceptedMinecraftVersions = "[1.7.10]", dependencies = "required-after:harvestcraft")
 public class HCOuterRealms {
 
     public static final String MODID = "harvestcraftor";
