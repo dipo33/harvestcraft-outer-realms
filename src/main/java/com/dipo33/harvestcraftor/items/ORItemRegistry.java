@@ -1,7 +1,7 @@
 package com.dipo33.harvestcraftor.items;
 
 import com.dipo33.harvestcraftor.HCOuterRealms;
-import com.pam.harvestcraft.BlockRegistry;
+import com.dipo33.harvestcraftor.block.ORBlockRegistry;
 import com.pam.harvestcraft.HarvestCraft;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -17,8 +17,7 @@ public class ORItemRegistry {
     public static Item hemleafSeed;
 
     public static void initItems() {
-        // TODO: use hemleafCropBlock
-        hemleafSeed = new ItemSeeds(BlockRegistry.pamstrawberryCrop, Blocks.farmland).setCreativeTab(tabCrops);
+        hemleafSeed = new ItemSeeds(ORBlockRegistry.hemleafCrop, Blocks.farmland).setCreativeTab(tabCrops);
     }
 
     public static void registerItems() {

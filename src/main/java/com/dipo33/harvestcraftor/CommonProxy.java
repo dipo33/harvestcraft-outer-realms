@@ -1,5 +1,6 @@
 package com.dipo33.harvestcraftor;
 
+import com.dipo33.harvestcraftor.block.ORBlockRegistry;
 import com.dipo33.harvestcraftor.items.ORItemRegistry;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -14,6 +15,10 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         ORItemRegistry.initItems();
         ORItemRegistry.registerItems();
+        ORBlockRegistry.initBlocks();
+        ORBlockRegistry.registerBlocks();
+
+
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
         HCOuterRealms.LOG.info(Config.greeting);
