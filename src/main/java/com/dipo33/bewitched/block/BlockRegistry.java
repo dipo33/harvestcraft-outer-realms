@@ -6,13 +6,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 
 public class BlockRegistry {
-    public static Block hemleafCrop = new BwBlockCrops();
+    public static Block belladonnaCrop = new BwBlockCrops();
 
     public static void initBlocks() {
     }
 
     public static void registerBlocks() {
-        registerBlock(hemleafCrop, "hemleaf");
+        registerBlock(belladonnaCrop, "belladonna");
     }
 
     public static void registerBlock(Block block, String name) {

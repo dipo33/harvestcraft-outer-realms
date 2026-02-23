@@ -11,14 +11,14 @@ import net.minecraft.item.ItemSeeds;
 
 public class ItemRegistry {
 
-    public static Item hemleafSeed;
+    public static Item belladonnaSeed;
 
     public static void initItems() {
-        hemleafSeed = new ItemSeeds(BlockRegistry.hemleafCrop, Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials);
+        belladonnaSeed = new ItemSeeds(BlockRegistry.belladonnaCrop, Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials);
     }
 
     public static void registerItems() {
-        registerItem(hemleafSeed, "hemleaf_seed");
+        registerItem(belladonnaSeed, "belladonna_seed");
     }
 
     private static void registerItem(Item item, String name) {
