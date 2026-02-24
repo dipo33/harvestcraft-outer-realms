@@ -1,18 +1,21 @@
 package com.dipo33.bewitched.block;
 
 import com.dipo33.bewitched.Bewitched;
+import com.dipo33.bewitched.data.ObjectHolder;
+import com.dipo33.bewitched.items.ItemRegistry;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 
 public class BlockRegistry {
-    public static Block belladonnaCrop = new BwBlockCrops()
-        .setStages(4);
-
-    public static void initBlocks() {
-    }
+    public static final ObjectHolder<Block> BELLADONNA_CROP = new ObjectHolder<>(() ->
+        new BwBlockCrops(ItemRegistry.BELLADONNA_SEED, new ObjectHolder<>(() -> Items.apple))
+            .setStages(4)
+    );
 
     public static void registerBlocks() {
-        registerBlock(belladonnaCrop, "belladonna");
+        registerBlock(BELLADONNA_CROP.get(), "belladonna");
     }
 
     public static void registerBlock(Block block, String name) {

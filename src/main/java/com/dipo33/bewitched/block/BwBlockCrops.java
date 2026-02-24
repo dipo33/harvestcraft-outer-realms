@@ -1,12 +1,21 @@
 package com.dipo33.bewitched.block;
 
+import com.dipo33.bewitched.data.ObjectHolder;
+import com.dipo33.bewitched.data.Pair;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 
 public class BwBlockCrops extends BlockCrops {
+
+    private final ObjectHolder<Item> crop;
+    private final ObjectHolder<Item> seed;
 
     private int stages = 4;
 
@@ -25,8 +34,10 @@ public class BwBlockCrops extends BlockCrops {
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
 
-    public BwBlockCrops() {
+    public BwBlockCrops(ObjectHolder<Item> seed, ObjectHolder<Item> crop) {
         super();
+        this.seed = seed;
+        this.crop = crop;
     }
 
     public BwBlockCrops setStages(int stages) {
@@ -47,5 +58,17 @@ public class BwBlockCrops extends BlockCrops {
         for (int i = 0; i < this.icons.length; ++i) {
             this.icons[i] = reg.registerIcon(this.getTextureName() + "_stage_" + i);
         }
+    }
+
+    @Override
+    // getSeed
+    protected Item func_149866_i() {
+        return this.seed.get();
+    }
+
+    @Override
+    // getCrop
+    protected Item func_149865_P() {
+        return this.crop.get();
     }
 }
