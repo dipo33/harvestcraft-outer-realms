@@ -18,6 +18,7 @@ public class BwBlockCrops extends BlockCrops {
     private final ObjectHolder<Item> seed;
 
     private int stages = 4;
+    private final List<Pair<Item, Double>> additionalDrops = new ArrayList<>();
 
     // prefer earlier stages to grow faster
     private static final int[][] META_STAGE_TO_ICON = new int[][]{
