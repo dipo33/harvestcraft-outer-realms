@@ -10,7 +10,9 @@ import java.util.List;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class BwBlockCrops extends BlockCrops {
 
@@ -18,7 +20,7 @@ public class BwBlockCrops extends BlockCrops {
     private final ObjectHolder<Item> seed;
 
     private int stages = 4;
-    private final List<Pair<Item, Double>> additionalDrops = new ArrayList<>();
+    private final List<Pair<ObjectHolder<Item>, Double>> additionalDrops = new ArrayList<>();
 
     // prefer earlier stages to grow faster
     private static final int[][] META_STAGE_TO_ICON = new int[][]{
@@ -43,6 +45,11 @@ public class BwBlockCrops extends BlockCrops {
 
     public BwBlockCrops setStages(int stages) {
         this.stages = stages;
+        return this;
+    }
+
+    public BwBlockCrops addAdditionalDrops(ObjectHolder<Item> item, double chance) {
+        this.additionalDrops.add(new Pair<>(item, chance));
         return this;
     }
 
@@ -71,5 +78,19 @@ public class BwBlockCrops extends BlockCrops {
     // getCrop
     protected Item func_149865_P() {
         return this.crop.get();
+    }
+
+    @Override
+    public ArrayList<ItemStack> getDrops(final World world, final int x, final int y, final int z, final int metadata, final int fortune) {
+        ArrayList<ItemStack> drops = super.getDrops(world, x, y, z, metadata, fortune);
+        if (metadata >= 7) {
+            for (Pair<ObjectHolder<Item>, Double> pair : this.additionalDrops) {
+                if (world.rand.nextDouble() < pair.second()) {
+                    drops.add(new ItemStack(pair.first().get()));
+                }
+            }
+        }
+
+        return drops;
     }
 }
