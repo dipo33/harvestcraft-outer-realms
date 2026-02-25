@@ -10,10 +10,11 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Bewitched.MODID, version = Tags.VERSION, name = "Bewitched", acceptedMinecraftVersions = "[1.7.10]")
+@Mod(modid = Bewitched.MODID, version = Tags.VERSION, name = Bewitched.MOD_NAME, acceptedMinecraftVersions = "[1.7.10]")
 public class Bewitched {
 
     public static final String MODID = "bewitched";
+    public static final String MOD_NAME = "Bewitched";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
     @SidedProxy(clientSide = "com.dipo33.bewitched.ClientProxy", serverSide = "com.dipo33.bewitched.CommonProxy")
