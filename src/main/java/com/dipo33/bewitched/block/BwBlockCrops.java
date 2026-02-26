@@ -49,6 +49,9 @@ public class BwBlockCrops extends BlockCrops {
     }
 
     public BwBlockCrops setStages(int stages) {
+        if (stages < 1 || stages > 8) {
+            throw new IllegalArgumentException("Stages must be between 1 and 8, got: " + stages);
+        }
         this.stages = stages;
         return this;
     }
