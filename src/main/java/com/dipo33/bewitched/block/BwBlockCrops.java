@@ -12,7 +12,9 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 
 public class BwBlockCrops extends BlockCrops {
 
@@ -20,6 +22,7 @@ public class BwBlockCrops extends BlockCrops {
     private final ObjectHolder<Item> seed;
 
     private int stages = 4;
+    private EnumPlantType plantType = EnumPlantType.Crop;
     private final List<Pair<ObjectHolder<Item>, Double>> additionalDrops = new ArrayList<>();
 
     // prefer earlier stages to grow faster
@@ -45,6 +48,11 @@ public class BwBlockCrops extends BlockCrops {
 
     public BwBlockCrops setStages(int stages) {
         this.stages = stages;
+        return this;
+    }
+
+    public BwBlockCrops setPlantType(EnumPlantType plantType) {
+        this.plantType = plantType;
         return this;
     }
 
@@ -92,5 +100,10 @@ public class BwBlockCrops extends BlockCrops {
         }
 
         return drops;
+    }
+
+    @Override
+    public EnumPlantType getPlantType(final IBlockAccess world, final int x, final int y, final int z) {
+        return this.plantType;
     }
 }

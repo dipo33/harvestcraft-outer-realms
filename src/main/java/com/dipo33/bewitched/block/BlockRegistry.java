@@ -7,6 +7,7 @@ import com.dipo33.bewitched.items.ItemRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
+import net.minecraftforge.common.EnumPlantType;
 
 public class BlockRegistry {
     public static final ObjectHolder<Block> BELLADONNA_CROP = new ObjectHolder<>(() ->
@@ -20,6 +21,7 @@ public class BlockRegistry {
     public static final ObjectHolder<Block> WATER_ARTICHOKE_CROP = new ObjectHolder<>(() ->
         new BwBlockCrops(ItemRegistry.WATER_ARTICHOKE_SEED, ItemRegistry.WATER_ARTICHOKE_GLOBE)
             .setStages(5)
+            .setPlantType(EnumPlantType.Water)
     );
     public static final ObjectHolder<Block> MANDRAKE_CROP = new ObjectHolder<>(() ->
         new BwBlockCrops(ItemRegistry.MANDRAKE_SEED, ItemRegistry.MANDRAKE_ROOT)
