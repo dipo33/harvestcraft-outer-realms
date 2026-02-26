@@ -1,53 +1,49 @@
 package com.dipo33.bewitched.items;
 
-import com.dipo33.bewitched.Bewitched;
-import com.dipo33.bewitched.block.BlockRegistry;
-import com.dipo33.bewitched.data.ObjectHolder;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 
+import com.dipo33.bewitched.Bewitched;
+import com.dipo33.bewitched.block.BlockRegistry;
+import com.dipo33.bewitched.data.ObjectHolder;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class ItemRegistry {
 
     // Seeds
-    public static final ObjectHolder<Item> BELLADONNA_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.BELLADONNA_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> WOLFSBANE_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.WOLFSBANE_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> WATER_ARTICHOKE_SEED = new ObjectHolder<>(() ->
-        new WaterItemSeeds(BlockRegistry.WATER_ARTICHOKE_CROP.get(), Blocks.water).setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> MANDRAKE_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.MANDRAKE_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> SNOW_WISP_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.SNOW_WISP_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> GARLIC = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.GARLIC_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
-    );
+    public static final ObjectHolder<Item> BELLADONNA_SEED = new ObjectHolder<>(
+        () -> new ItemSeeds(BlockRegistry.BELLADONNA_CROP.get(), Blocks.farmland)
+            .setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> WOLFSBANE_SEED = new ObjectHolder<>(
+        () -> new ItemSeeds(BlockRegistry.WOLFSBANE_CROP.get(), Blocks.farmland)
+            .setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> WATER_ARTICHOKE_SEED = new ObjectHolder<>(
+        () -> new WaterItemSeeds(BlockRegistry.WATER_ARTICHOKE_CROP.get(), Blocks.water)
+            .setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> MANDRAKE_SEED = new ObjectHolder<>(
+        () -> new ItemSeeds(BlockRegistry.MANDRAKE_CROP.get(), Blocks.farmland)
+            .setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> SNOW_WISP_SEED = new ObjectHolder<>(
+        () -> new ItemSeeds(BlockRegistry.SNOW_WISP_CROP.get(), Blocks.farmland)
+            .setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> GARLIC = new ObjectHolder<>(
+        () -> new ItemSeeds(BlockRegistry.GARLIC_CROP.get(), Blocks.farmland)
+            .setCreativeTab(CreativeTabs.tabMaterials));
 
     // Crops
-    public static final ObjectHolder<Item> BELLADONNA_FLOWER = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> WOLFSBANE_FLOWER = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> WATER_ARTICHOKE_GLOBE = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> MANDRAKE_ROOT = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
-    );
-    public static final ObjectHolder<Item> ICY_NEEDLE = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
-    );
+    public static final ObjectHolder<Item> BELLADONNA_FLOWER = new ObjectHolder<>(
+        () -> new Item().setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> WOLFSBANE_FLOWER = new ObjectHolder<>(
+        () -> new Item().setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> WATER_ARTICHOKE_GLOBE = new ObjectHolder<>(
+        () -> new Item().setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> MANDRAKE_ROOT = new ObjectHolder<>(
+        () -> new Item().setCreativeTab(CreativeTabs.tabMaterials));
+    public static final ObjectHolder<Item> ICY_NEEDLE = new ObjectHolder<>(
+        () -> new Item().setCreativeTab(CreativeTabs.tabMaterials));
 
     public static void registerItems() {
         registerItem(BELLADONNA_SEED.get(), "belladonna_seed");

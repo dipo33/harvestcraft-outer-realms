@@ -1,13 +1,8 @@
 package com.dipo33.bewitched.block;
 
-import com.dipo33.bewitched.Config;
-import com.dipo33.bewitched.data.ObjectHolder;
-import com.dipo33.bewitched.data.Pair;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,6 +12,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+
+import com.dipo33.bewitched.Config;
+import com.dipo33.bewitched.data.ObjectHolder;
+import com.dipo33.bewitched.data.Pair;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BwBlockCrops extends BlockCrops {
 
@@ -28,15 +30,14 @@ public class BwBlockCrops extends BlockCrops {
     private final List<Pair<ObjectHolder<Item>, Double>> additionalDrops = new ArrayList<>();
 
     // prefer earlier stages to grow faster
-    private static final int[][] META_STAGE_TO_ICON = new int[][]{
-        new int[]{0, 0, 0, 0, 0, 0, 0, 0}, // 1 stage
-        new int[]{0, 0, 0, 0, 0, 0, 0, 1}, // 2 stages
-        new int[]{0, 0, 0, 1, 1, 1, 1, 2}, // 3 stages
-        new int[]{0, 0, 1, 1, 2, 2, 2, 3}, // 4 stages
-        new int[]{0, 1, 1, 2, 2, 3, 3, 4}, // 5 stages
-        new int[]{0, 1, 2, 3, 3, 4, 4, 5}, // 6 stages
-        new int[]{0, 1, 2, 3, 4, 5, 5, 6}, // 7 stages
-        new int[]{0, 1, 2, 3, 4, 5, 6, 7}, // 8 stages
+    private static final int[][] META_STAGE_TO_ICON = new int[][] { new int[] { 0, 0, 0, 0, 0, 0, 0, 0 }, // 1 stage
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 1 }, // 2 stages
+        new int[] { 0, 0, 0, 1, 1, 1, 1, 2 }, // 3 stages
+        new int[] { 0, 0, 1, 1, 2, 2, 2, 3 }, // 4 stages
+        new int[] { 0, 1, 1, 2, 2, 3, 3, 4 }, // 5 stages
+        new int[] { 0, 1, 2, 3, 3, 4, 4, 5 }, // 6 stages
+        new int[] { 0, 1, 2, 3, 4, 5, 5, 6 }, // 7 stages
+        new int[] { 0, 1, 2, 3, 4, 5, 6, 7 }, // 8 stages
     };
 
     @SideOnly(Side.CLIENT)
@@ -95,12 +96,16 @@ public class BwBlockCrops extends BlockCrops {
     }
 
     @Override
-    public ArrayList<ItemStack> getDrops(final World world, final int x, final int y, final int z, final int metadata, final int fortune) {
+    public ArrayList<ItemStack> getDrops(final World world, final int x, final int y, final int z, final int metadata,
+        final int fortune) {
         ArrayList<ItemStack> drops = super.getDrops(world, x, y, z, metadata, fortune);
         if (metadata >= 7) {
             for (Pair<ObjectHolder<Item>, Double> pair : this.additionalDrops) {
                 if (world.rand.nextDouble() < pair.second()) {
-                    drops.add(new ItemStack(pair.first().get()));
+                    drops.add(
+                        new ItemStack(
+                            pair.first()
+                                .get()));
                 }
             }
         }
@@ -114,7 +119,8 @@ public class BwBlockCrops extends BlockCrops {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float subX,
+        float subY, float subZ) {
         if (!Config.rightClickMatureCropHarvest) {
             return false;
         }

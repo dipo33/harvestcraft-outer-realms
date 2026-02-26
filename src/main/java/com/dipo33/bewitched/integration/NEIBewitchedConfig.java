@@ -1,12 +1,14 @@
 package com.dipo33.bewitched.integration;
 
-import codechicken.nei.api.API;
-import codechicken.nei.api.IConfigureNEI;
+import net.minecraft.item.ItemStack;
+
 import com.dipo33.bewitched.Bewitched;
 import com.dipo33.bewitched.Tags;
 import com.dipo33.bewitched.block.BlockRegistry;
+
+import codechicken.nei.api.API;
+import codechicken.nei.api.IConfigureNEI;
 import cpw.mods.fml.common.Optional;
-import net.minecraft.item.ItemStack;
 
 @Optional.Interface(iface = "codechicken.nei.api.IConfigureNEI", modid = "NotEnoughItems")
 public class NEIBewitchedConfig implements IConfigureNEI {

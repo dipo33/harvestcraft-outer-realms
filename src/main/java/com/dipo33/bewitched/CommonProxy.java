@@ -17,7 +17,6 @@ public class CommonProxy {
         BlockRegistry.registerBlocks();
         ItemRegistry.registerItems();
 
-
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
     }
 
@@ -27,10 +26,8 @@ public class CommonProxy {
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
-    public void postInit(FMLPostInitializationEvent event) {
-    }
+    public void postInit(FMLPostInitializationEvent event) {}
 
     // register server commands in this event handler (Remove if not needed)
-    public void serverStarting(FMLServerStartingEvent event) {
-    }
+    public void serverStarting(FMLServerStartingEvent event) {}
 }

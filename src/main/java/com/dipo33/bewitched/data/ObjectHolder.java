@@ -3,6 +3,7 @@ package com.dipo33.bewitched.data;
 import java.util.function.Supplier;
 
 public class ObjectHolder<T> implements Supplier<T> {
+
     private Supplier<? extends T> delegate;
     private T value;
     private boolean initialized;

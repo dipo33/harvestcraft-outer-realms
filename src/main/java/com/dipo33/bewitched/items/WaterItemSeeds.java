@@ -9,6 +9,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 public class WaterItemSeeds extends ItemSeeds {
+
     private final Block crop;
 
     public WaterItemSeeds(final Block crop, final Block soil) {
@@ -17,11 +18,10 @@ public class WaterItemSeeds extends ItemSeeds {
     }
 
     @Override
-    public boolean onItemUse(final ItemStack item, final EntityPlayer player, final World world, final int x, final int y, final int z, final int side,
-                             final float hitX, final float hitY, final float hitZ) {
+    public boolean onItemUse(final ItemStack item, final EntityPlayer player, final World world, final int x,
+        final int y, final int z, final int side, final float hitX, final float hitY, final float hitZ) {
         return false;
     }
-
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player) {
@@ -42,12 +42,15 @@ public class WaterItemSeeds extends ItemSeeds {
                     return itemStack;
                 }
 
-                if (world.getBlock(i, j, k).getMaterial() == Material.water && world.getBlockMetadata(i, j, k) == 0 && world.isAirBlock(i, j + 1, k)) {
-                    net.minecraftforge.common.util.BlockSnapshot blocksnapshot =
-                        net.minecraftforge.common.util.BlockSnapshot.getBlockSnapshot(world, i, j + 1, k);
+                if (world.getBlock(i, j, k)
+                    .getMaterial() == Material.water && world.getBlockMetadata(i, j, k) == 0
+                    && world.isAirBlock(i, j + 1, k)) {
+                    net.minecraftforge.common.util.BlockSnapshot blocksnapshot = net.minecraftforge.common.util.BlockSnapshot
+                        .getBlockSnapshot(world, i, j + 1, k);
                     world.setBlock(i, j + 1, k, this.crop);
-                    if (net.minecraftforge.event.ForgeEventFactory.onPlayerBlockPlace(player, blocksnapshot,
-                        net.minecraftforge.common.util.ForgeDirection.UP).isCanceled()) {
+                    if (net.minecraftforge.event.ForgeEventFactory
+                        .onPlayerBlockPlace(player, blocksnapshot, net.minecraftforge.common.util.ForgeDirection.UP)
+                        .isCanceled()) {
                         blocksnapshot.restore(true, false);
                         return itemStack;
                     }

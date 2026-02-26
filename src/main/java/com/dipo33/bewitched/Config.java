@@ -12,9 +12,10 @@ public class Config {
         Configuration configuration = new Configuration(configFile);
 
         rightClickMatureCropHarvest = configuration.getBoolean(
-            "rightClickMatureCropHarvest", Configuration.CATEGORY_GENERAL, rightClickMatureCropHarvest,
-            "Should right click on mature crop harvest the crop?"
-        );
+            "rightClickMatureCropHarvest",
+            Configuration.CATEGORY_GENERAL,
+            rightClickMatureCropHarvest,
+            "Should right click on mature crop harvest the crop?");
 
         if (configuration.hasChanged()) {
             configuration.save();
