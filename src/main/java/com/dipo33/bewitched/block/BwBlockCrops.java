@@ -115,7 +115,7 @@ public class BwBlockCrops extends BlockCrops {
 
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
-        if (!Config.rightClickMatureCropHarvest) {
+        if (!Config.rightClickMatureCropHarvest || world.isRemote) {
             return false;
         }
 
