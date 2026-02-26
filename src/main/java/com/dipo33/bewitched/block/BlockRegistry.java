@@ -46,7 +46,7 @@ public class BlockRegistry {
         registerBlock(GARLIC_CROP.get(), "garlic");
     }
 
-    public static void registerBlock(Block block, String name) {
+    private static void registerBlock(Block block, String name) {
         block.setBlockTextureName(Bewitched.MODID + ":" + name);
         block.setBlockName(name);
         GameRegistry.registerBlock(block, name);
