@@ -67,6 +67,7 @@ public class BwBlockCrops extends BlockCrops {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
         return this.icons[META_STAGE_TO_ICON[this.stages - 1][meta]];
     }
