@@ -62,6 +62,9 @@ public class BwBlockCrops extends BlockCrops {
     }
 
     public BwBlockCrops addAdditionalDrops(ObjectHolder<Item> item, double chance) {
+        if (chance < 0.0D || chance > 1.0D) {
+            throw new IllegalArgumentException("Chance must be between 0.0 and 1.0, got: " + chance);
+        }
         this.additionalDrops.add(new Pair<>(item, chance));
         return this;
     }
