@@ -19,9 +19,6 @@ public class CommonProxy {
 
 
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
-
-        Bewitched.LOG.info(Config.greeting);
-        Bewitched.LOG.info("I am MyMod at version " + Tags.VERSION);
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)

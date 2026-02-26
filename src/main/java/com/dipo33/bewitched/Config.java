@@ -6,12 +6,15 @@ import net.minecraftforge.common.config.Configuration;
 
 public class Config {
 
-    public static String greeting = "Hello World";
+    public static boolean rightClickMatureCropHarvest = true;
 
     public static void synchronizeConfiguration(File configFile) {
         Configuration configuration = new Configuration(configFile);
 
-        greeting = configuration.getString("greeting", Configuration.CATEGORY_GENERAL, greeting, "How shall I greet?");
+        rightClickMatureCropHarvest = configuration.getBoolean(
+            "rightClickMatureCropHarvest", Configuration.CATEGORY_GENERAL, rightClickMatureCropHarvest,
+            "Should right click on mature crop harvest the crop?"
+        );
 
         if (configuration.hasChanged()) {
             configuration.save();

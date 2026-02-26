@@ -1,5 +1,6 @@
 package com.dipo33.bewitched.block;
 
+import com.dipo33.bewitched.Config;
 import com.dipo33.bewitched.data.ObjectHolder;
 import com.dipo33.bewitched.data.Pair;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -105,5 +107,21 @@ public class BwBlockCrops extends BlockCrops {
     @Override
     public EnumPlantType getPlantType(final IBlockAccess world, final int x, final int y, final int z) {
         return this.plantType;
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float subX, float subY, float subZ) {
+        if (!Config.rightClickMatureCropHarvest) {
+            return false;
+        }
+
+        int meta = world.getBlockMetadata(x, y, z);
+        if (meta == 7) {
+            this.dropBlockAsItem(world, x, y, z, meta, 0);
+            world.setBlock(x, y, z, this, 0, 2);
+            return true;
+        }
+
+        return false;
     }
 }
