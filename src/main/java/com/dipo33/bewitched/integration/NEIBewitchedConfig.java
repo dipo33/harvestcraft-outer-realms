@@ -8,7 +8,7 @@ import com.dipo33.bewitched.block.BlockRegistry;
 import cpw.mods.fml.common.Optional;
 import net.minecraft.item.ItemStack;
 
-@Optional.Interface(iface = "codechicken.nei.api.API", modid = "NotEnoughItems")
+@Optional.Interface(iface = "codechicken.nei.api.IConfigureNEI", modid = "NotEnoughItems")
 public class NEIBewitchedConfig implements IConfigureNEI {
 
     @Override
