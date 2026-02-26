@@ -45,8 +45,8 @@ public class BwBlockCrops extends BlockCrops {
 
     public BwBlockCrops(ObjectHolder<Item> seed, ObjectHolder<Item> crop) {
         super();
-        this.seed = seed;
-        this.crop = crop;
+        this.seed = Objects.requireNonNull(seed, "seed holder cannot be null");
+        this.crop = Objects.requireNonNull(crop, "crop holder cannot be null");
     }
 
     public BwBlockCrops setStages(int stages) {
@@ -58,12 +58,12 @@ public class BwBlockCrops extends BlockCrops {
     }
 
     public BwBlockCrops setPlantType(EnumPlantType plantType) {
-        this.plantType = plantType;
+        this.plantType = Objects.requireNonNull(plantType, "plantType cannot be null");;
         return this;
     }
 
     public BwBlockCrops addAdditionalDrops(ObjectHolder<Item> item, double chance) {
-        Objects.requireNonNull(item);
+        Objects.requireNonNull(item, "item holder cannot be null");
         if (Double.isNaN(chance) || chance < 0.0D || chance > 1.0D) {
             throw new IllegalArgumentException("Chance must be between 0.0 and 1.0, got: " + chance);
         }
