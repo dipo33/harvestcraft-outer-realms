@@ -34,6 +34,16 @@ public class ItemMutandis extends Item {
             new Pair<>(Blocks.waterlily, 0)
         ));
 
+    private static final List<Pair<Block, Integer>> ADDITIONAL_SOURCE_BLOCKS = new ArrayList<>(
+        Arrays.asList(
+            new Pair<>(Blocks.sapling, 8),
+            new Pair<>(Blocks.sapling, 9),
+            new Pair<>(Blocks.sapling, 10),
+            new Pair<>(Blocks.sapling, 11),
+            new Pair<>(Blocks.sapling, 12),
+            new Pair<>(Blocks.sapling, 13)
+        ));
+
     @Override
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
         if (!player.canPlayerEdit(x, y, z, side, stack)) {
@@ -58,13 +68,13 @@ public class ItemMutandis extends Item {
         var current = new Pair<>(block, metadata);
 
         final int currentIndex = BLOCKS.indexOf(current);
-        if (currentIndex < 0) {
+        if (currentIndex < 0 && !ADDITIONAL_SOURCE_BLOCKS.contains(current)) {
             return false;
         }
 
         // Pick a random index in [0, n-2], then shift if it crosses currentIndex.
         int randomIndex = world.rand.nextInt(BLOCKS.size() - 1);
-        if (randomIndex >= currentIndex) {
+        if (randomIndex >= currentIndex && currentIndex >= 0) {
             randomIndex++;
         }
 
