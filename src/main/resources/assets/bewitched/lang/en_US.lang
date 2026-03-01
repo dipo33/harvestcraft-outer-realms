@@ -19,3 +19,5 @@ tile.water_artichoke.name=Water Artichoke Crop
 tile.mandrake.name=Mandrake Crop
 tile.snow_wisp.name=Snow Wisp Crop
 tile.garlic.name=Garlic Crop
+
+itemGroup.bewitched=Bewitched
