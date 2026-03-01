@@ -4,7 +4,9 @@ import com.dipo33.bewitched.block.BlockRegistry;
 import com.dipo33.bewitched.items.ItemRegistry;
 import com.dipo33.bewitched.items.SeedDrops;
 import com.dipo33.bewitched.network.BwNetwork;
+import com.dipo33.bewitched.network.handler.PlaceholderHandler;
 import com.dipo33.bewitched.network.message.EffectPlayMsg;
+import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -25,8 +27,14 @@ public class CommonProxy {
         BlockRegistry.registerBlocks();
         ItemRegistry.registerItems();
         BwNetwork.register();
+        this.registerClientMessages();
 
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
+    }
+
+    protected void registerClientMessages() {
+        var handler = new PlaceholderHandler();
+        BwNetwork.registerClientMessage(handler, UpdateFlowerPotMsg.class);
     }
 
     /**
