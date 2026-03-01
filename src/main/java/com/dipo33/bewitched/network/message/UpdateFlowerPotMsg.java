@@ -1,5 +1,7 @@
 package com.dipo33.bewitched.network.message;
 
+import com.dipo33.bewitched.network.handler.PlaceholderHandler;
+
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.Item;
@@ -36,5 +38,8 @@ public class UpdateFlowerPotMsg implements IMessage {
         buf.writeInt(z);
         buf.writeInt(itemId);
         buf.writeInt(meta);
+    }
+
+    public static class SafeHandler extends PlaceholderHandler<UpdateFlowerPotMsg> {
     }
 }

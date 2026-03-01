@@ -4,7 +4,6 @@ import com.dipo33.bewitched.block.BlockRegistry;
 import com.dipo33.bewitched.items.ItemRegistry;
 import com.dipo33.bewitched.items.SeedDrops;
 import com.dipo33.bewitched.network.BwNetwork;
-import com.dipo33.bewitched.network.handler.PlaceholderHandler;
 import com.dipo33.bewitched.network.message.EffectPlayMsg;
 import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 
@@ -33,8 +32,8 @@ public class CommonProxy {
     }
 
     protected void registerClientMessages() {
-        var handler = new PlaceholderHandler();
-        BwNetwork.registerClientMessage(handler, UpdateFlowerPotMsg.class);
+        BwNetwork.registerClientMessage(EffectPlayMsg.SafeHandler.class, EffectPlayMsg.class);
+        BwNetwork.registerClientMessage(UpdateFlowerPotMsg.SafeHandler.class, UpdateFlowerPotMsg.class);
     }
 
     /**
@@ -69,8 +68,5 @@ public class CommonProxy {
      *     the Forge server starting event providing access to command registration and server context
      */
     public void serverStarting(FMLServerStartingEvent event) {
-    }
-
-    public void playFX(EffectPlayMsg message) {
     }
 }

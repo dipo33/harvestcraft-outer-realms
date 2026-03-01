@@ -4,10 +4,10 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class PlaceholderHandler implements IMessageHandler<IMessage, IMessage> {
+public class PlaceholderHandler<T extends IMessage> implements IMessageHandler<T, IMessage> {
 
     @Override
-    public IMessage onMessage(final IMessage message, final MessageContext ctx) {
+    public IMessage onMessage(final T message, final MessageContext ctx) {
         return null;
     }
 }

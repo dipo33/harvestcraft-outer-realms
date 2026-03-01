@@ -1,11 +1,9 @@
 package com.dipo33.bewitched.network.message;
 
-import com.dipo33.bewitched.Bewitched;
+import com.dipo33.bewitched.network.handler.PlaceholderHandler;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.world.World;
 
@@ -43,11 +41,6 @@ public class EffectPlayMsg implements IMessage {
         buf.writeDouble(this.z);
     }
 
-    public static class Handler implements IMessageHandler<EffectPlayMsg, IMessage> {
-        @Override
-        public IMessage onMessage(final EffectPlayMsg message, final MessageContext ctx) {
-            Bewitched.proxy.playFX(message);
-            return null;
-        }
+    public static class SafeHandler extends PlaceholderHandler<EffectPlayMsg> {
     }
 }
