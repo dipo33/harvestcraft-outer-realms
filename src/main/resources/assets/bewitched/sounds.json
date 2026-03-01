@@ -1,0 +1,8 @@
+{
+  "mutandis": {
+    "category": "master",
+    "sounds": [
+      { "name": "mutandis", "stream": false }
+    ]
+  }
+}

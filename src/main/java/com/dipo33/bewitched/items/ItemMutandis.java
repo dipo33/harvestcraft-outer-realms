@@ -3,6 +3,7 @@ package com.dipo33.bewitched.items;
 import com.dipo33.bewitched.client.effect.EffectPlayer;
 import com.dipo33.bewitched.client.effect.Effects;
 import com.dipo33.bewitched.data.Pair;
+import com.dipo33.bewitched.sound.Sounds;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +43,7 @@ public class ItemMutandis extends Item {
         if (applyMutandis(stack, world, x, y, z)) {
             if (!world.isRemote) {
                 EffectPlayer.playFX(Effects.MUTANDIS_FX, world, x, y, z, 32);
+                world.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, Sounds.MUTANDIS, 1.0F, 0.60F);
             }
 
             return true;
