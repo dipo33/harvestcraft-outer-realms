@@ -66,6 +66,11 @@ public class MutandisMutationRegistry {
         MutandisMutation.primitiveMutation(Blocks.waterlily, 0),
 
         // ─────────────────────────────
+        // Glint Weed
+        // ─────────────────────────────
+        MutandisMutation.primitiveMutation(BlockRegistry.GLINT_WEED.get(), 0),
+
+        // ─────────────────────────────
         // Spanish Moss
         // ─────────────────────────────
         new MutandisMutation(

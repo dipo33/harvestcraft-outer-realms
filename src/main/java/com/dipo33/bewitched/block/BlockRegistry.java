@@ -44,6 +44,11 @@ public class BlockRegistry {
             .setHardness(0.2F)
             .setStepSound(Block.soundTypeGrass)
     );
+    public static final ObjectHolder<Block> GLINT_WEED = new ObjectHolder<>(() ->
+        new BlockGlintWeed().setCreativeTab(Bewitched.CREATIVE_TAB)
+            .setHardness(0F)
+            .setStepSound(Block.soundTypeGrass)
+    );
 
     /**
      * Register the mod's crop blocks with the game registry.
@@ -57,6 +62,7 @@ public class BlockRegistry {
         registerBlock(GARLIC_CROP.get(), "garlic");
 
         registerBlock(SPANISH_MOSS.get(), "spanish_moss");
+        registerBlock(GLINT_WEED.get(), "glint_weed");
     }
 
     /**
