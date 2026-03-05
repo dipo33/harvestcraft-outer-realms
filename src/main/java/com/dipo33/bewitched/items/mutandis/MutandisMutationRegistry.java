@@ -71,6 +71,11 @@ public class MutandisMutationRegistry {
         MutandisMutation.primitiveMutation(BlockRegistry.GLINT_WEED.get(), 0),
 
         // ─────────────────────────────
+        // Ember Moss
+        // ─────────────────────────────
+        MutandisMutation.primitiveMutation(BlockRegistry.EMBER_MOSS.get(), 0),
+
+        // ─────────────────────────────
         // Spanish Moss
         // ─────────────────────────────
         new MutandisMutation(
