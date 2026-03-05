@@ -1,5 +1,6 @@
 package com.dipo33.bewitched.client.effect;
 
+import com.dipo33.bewitched.client.effect.entity.EntityMutandisFX;
 import com.dipo33.bewitched.network.message.EffectPlayMsg;
 
 import cpw.mods.fml.relauncher.Side;
@@ -36,6 +37,7 @@ public class EffectRegistry {
     }
 
     public static void registerEffects() {
-        register(Effects.MUTANDIS_FX, new MutandisFX());
+        register(Effects.MUTANDIS_FX, new MutandisFX(EntityMutandisFX.Variant.MUTANDIS));
+        register(Effects.MUTANDIS_EXTREMIS_FX, new MutandisFX(EntityMutandisFX.Variant.MUTANDIS_EXTREMIS));
     }
 }

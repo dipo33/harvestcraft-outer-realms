@@ -30,7 +30,12 @@ public class ItemMutandis extends Item {
 
         if (this.applyMutandis(stack, world, x, y, z)) {
             if (!world.isRemote) {
-                EffectPlayer.playFX(Effects.MUTANDIS_FX, world, x, y, z, 32);
+                if (this == ItemRegistry.MUTANDIS_EXTREMIS.get()) {
+                    EffectPlayer.playFX(Effects.MUTANDIS_EXTREMIS_FX, world, x, y, z, 32);
+                } else {
+                    EffectPlayer.playFX(Effects.MUTANDIS_FX, world, x, y, z, 32);
+                }
+
                 world.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, Sounds.MUTANDIS, 1.0F, 0.60F);
             }
 
