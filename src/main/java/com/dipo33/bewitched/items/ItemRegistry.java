@@ -52,6 +52,9 @@ public class ItemRegistry {
     public static final ObjectHolder<Item> MUTANDIS = new ObjectHolder<>(() ->
         new ItemMutandis().setCreativeTab(Bewitched.CREATIVE_TAB)
     );
+    public static final ObjectHolder<Item> MUTANDIS_EXTREMIS = new ObjectHolder<>(() ->
+        new ItemMutandis().setCreativeTab(Bewitched.CREATIVE_TAB)
+    );
 
     /**
      * Registers every item declared in this class with the game's item registry.
@@ -71,6 +74,7 @@ public class ItemRegistry {
         registerItem(ICY_NEEDLE.get(), "icy_needle");
 
         registerItem(MUTANDIS.get(), "mutandis");
+        registerItem(MUTANDIS_EXTREMIS.get(), "mutandis_extremis");
     }
 
     /**

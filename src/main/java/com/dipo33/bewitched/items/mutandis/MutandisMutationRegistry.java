@@ -6,6 +6,8 @@ import com.github.bsideup.jabel.Desugar;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
@@ -156,6 +158,34 @@ public class MutandisMutationRegistry {
                 MutandisMutation.Source.exact(Blocks.sapling, 13)
             )
         )
+    );
+
+    /**
+     * Advanced world-block mutations.
+     */
+    public static final List<MutandisMutation> ADVANCED_WORLD_MUTATIONS = Stream.concat(
+        WORLD_MUTATIONS.stream(),
+        Stream.of(
+            MutandisMutation.primitiveAnyMetaMutation(Blocks.potatoes, 0),
+            MutandisMutation.primitiveAnyMetaMutation(Blocks.carrots, 0),
+            MutandisMutation.primitiveAnyMetaMutation(Blocks.nether_wart, 0),
+            MutandisMutation.primitiveAnyMetaMutation(Blocks.wheat, 0),
+            MutandisMutation.primitiveAnyMetaMutation(Blocks.reeds, 0),
+            MutandisMutation.primitiveAnyMetaMutation(Blocks.cactus, 0),
+            MutandisMutation.primitiveAnyMetaMutation(Blocks.pumpkin_stem, 0),
+            MutandisMutation.primitiveAnyMetaMutation(Blocks.melon_stem, 0),
+            MutandisMutation.primitiveAnyMetaMutation(BlockRegistry.MANDRAKE_CROP.get(), 0),
+            MutandisMutation.primitiveAnyMetaMutation(BlockRegistry.BELLADONNA_CROP.get(), 0),
+            MutandisMutation.primitiveAnyMetaMutation(BlockRegistry.WATER_ARTICHOKE_CROP.get(), 0)
+        )
+    ).collect(Collectors.toList());
+
+    /**
+     * Special advanced world-block mutations.
+     */
+    public static final List<MutandisMutation> SPECIAL_WORLD_MUTATIONS = Arrays.asList(
+        MutandisMutation.primitiveMutation(Blocks.grass, 0),
+        MutandisMutation.primitiveMutation(Blocks.mycelium, 0)
     );
 
     /**

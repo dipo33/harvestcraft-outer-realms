@@ -77,6 +77,15 @@ public record MutandisMutation(Output output, List<Source> sources) {
         );
     }
 
+    public static MutandisMutation primitiveAnyMetaMutation(final Block block, int meta) {
+        return new MutandisMutation(
+            new Output(block, basicStrategy(meta)),
+            Collections.singletonList(
+                Source.anyMeta(block)
+            )
+        );
+    }
+
     /**
      * Fixed-meta strategy: only spawns exactly one meta.
      */

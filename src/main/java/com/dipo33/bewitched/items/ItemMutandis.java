@@ -9,6 +9,7 @@ import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 import com.dipo33.bewitched.sound.Sounds;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
+import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -27,7 +28,7 @@ public class ItemMutandis extends Item {
             return false;
         }
 
-        if (applyMutandis(stack, world, x, y, z)) {
+        if (this.applyMutandis(stack, world, x, y, z)) {
             if (!world.isRemote) {
                 EffectPlayer.playFX(Effects.MUTANDIS_FX, world, x, y, z, 32);
                 world.playSoundEffect(x + 0.5, y + 0.5, z + 0.5, Sounds.MUTANDIS, 1.0F, 0.60F);
@@ -40,30 +41,22 @@ public class ItemMutandis extends Item {
     }
 
     private static boolean applyMutationToWorldBlock(
-        ItemStack stack, World world, int x, int y, int z, MutandisMutation mutation
+        ItemStack stack, World world, int x, int y, int z, MutandisMutation.Output mutationOutput
     ) {
-        if (mutation == null) {
-            return false;
-        }
-
         if (!world.isRemote) {
-            int meta = mutation.output().placement().placementMeta(world, x, y, z);
-            world.setBlock(x, y, z, mutation.output().block(), meta, 2);
+            int meta = mutationOutput.placement().placementMeta(world, x, y, z);
+            world.setBlock(x, y, z, mutationOutput.block(), meta, 2);
             stack.stackSize--;
         }
         return true;
     }
 
     private static boolean applyMutationToFlowerPot(
-        ItemStack stack, World world, TileEntityFlowerPot pot, MutandisMutation mutation
+        ItemStack stack, World world, TileEntityFlowerPot pot, MutandisMutation.Output mutationOutput
     ) {
-        if (mutation == null) {
-            return false;
-        }
-
         if (!world.isRemote) {
-            int meta = mutation.output().placement().placementMeta(world, pot.xCoord, pot.yCoord, pot.zCoord);
-            pot.func_145964_a(Item.getItemFromBlock(mutation.output().block()), meta);
+            int meta = mutationOutput.placement().placementMeta(world, pot.xCoord, pot.yCoord, pot.zCoord);
+            pot.func_145964_a(Item.getItemFromBlock(mutationOutput.block()), meta);
             pot.markDirty();
 
             if (!world.setBlockMetadataWithNotify(pot.xCoord, pot.yCoord, pot.zCoord, meta, 2)) {
@@ -80,15 +73,15 @@ public class ItemMutandis extends Item {
         return true;
     }
 
-    private static boolean applyMutandis(ItemStack stack, World world, int x, int y, int z) {
+    private boolean applyMutandis(ItemStack stack, World world, int x, int y, int z) {
         Block block = world.getBlock(x, y, z);
-        int metadata = world.getBlockMetadata(x, y, z);
+        int meta = world.getBlockMetadata(x, y, z);
         if (block == Blocks.flower_pot) {
             return applyMutandisOnFlowerPot(stack, world, x, y, z);
         }
 
-        var mutation = MutandisMutation.mutate(MutandisMutationRegistry.WORLD_MUTATIONS, block, metadata, world.rand);
-        return applyMutationToWorldBlock(stack, world, x, y, z, mutation);
+        var mutation = pickMutation(block, meta, world.rand);
+        return mutation != null && applyMutationToWorldBlock(stack, world, x, y, z, mutation.output());
     }
 
     private static boolean applyMutandisOnFlowerPot(ItemStack stack, World world, int x, int y, int z) {
@@ -105,6 +98,15 @@ public class ItemMutandis extends Item {
         Block contained = Block.getBlockFromItem(itemBlock);
         int meta = pot.getFlowerPotData();
         var mutation = MutandisMutation.mutate(MutandisMutationRegistry.FLOWER_POT_MUTATIONS, contained, meta, world.rand);
-        return applyMutationToFlowerPot(stack, world, pot, mutation);
+        return mutation != null && applyMutationToFlowerPot(stack, world, pot, mutation.output());
+    }
+
+    private MutandisMutation pickMutation(Block block, int meta, Random rng) {
+        if (this == ItemRegistry.MUTANDIS_EXTREMIS.get()) {
+            MutandisMutation m = MutandisMutation.mutate(MutandisMutationRegistry.ADVANCED_WORLD_MUTATIONS, block, meta, rng);
+            return m != null ? m : MutandisMutation.mutate(MutandisMutationRegistry.SPECIAL_WORLD_MUTATIONS, block, meta, rng);
+        } else {
+            return MutandisMutation.mutate(MutandisMutationRegistry.WORLD_MUTATIONS, block, meta, rng);
+        }
     }
 }
