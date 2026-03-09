@@ -2,6 +2,7 @@ package com.dipo33.bewitched;
 
 import com.dipo33.bewitched.block.BlockRegistry;
 import com.dipo33.bewitched.config.Config;
+import com.dipo33.bewitched.init.BewitchedRecipes;
 import com.dipo33.bewitched.items.ItemRegistry;
 import com.dipo33.bewitched.items.SeedDrops;
 import com.dipo33.bewitched.items.mutandis.MutandisMutationRegistry;
@@ -47,8 +48,9 @@ public class CommonProxy {
      *     the Forge initialization event containing mod configuration and environment data
      */
     public void init(FMLInitializationEvent event) {
-        SeedDrops.dropSeedsFromGrass();
+        BewitchedRecipes.init();
         MutandisMutationRegistry.registerMutations();
+        SeedDrops.dropSeedsFromGrass();
     }
 
     /**
