@@ -10,9 +10,13 @@ public final class MutationRegistry {
 
     private static final Map<MutationPoolType, MutationPool> POOLS = new EnumMap<>(MutationPoolType.class);
 
-    private MutationRegistry() {}
+    private MutationRegistry() {
+    }
 
     public static MutationPool createPool(MutationPoolType type, String unlocalizedName) {
+        if (POOLS.containsKey(type)) {
+            throw new IllegalStateException("Mutation pool already registered for type: " + type);
+        }
         MutationPool pool = new MutationPool(type, unlocalizedName);
         POOLS.put(type, pool);
         return pool;
@@ -63,8 +67,12 @@ public final class MutationRegistry {
     }
 
     private static boolean areStacksSame(ItemStack a, ItemStack b) {
-        if (a == null || b == null) return false;
-        if (a.getItem() != b.getItem()) return false;
+        if (a == null || b == null) {
+            return false;
+        }
+        if (a.getItem() != b.getItem()) {
+            return false;
+        }
 
         int ma = a.getItemDamage();
         int mb = b.getItemDamage();
