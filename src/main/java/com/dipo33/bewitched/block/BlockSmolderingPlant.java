@@ -29,9 +29,9 @@ public class BlockSmolderingPlant extends BlockBush {
     }
 
     @Override
-    public boolean canBlockStay(final World worldIn, final int x, final int y, final int z) {
-        return worldIn.getBlock(x, y - 1, z).isBlockSolid(worldIn, x, y - 1, z, ForgeDirection.UP.flag)
-            || (worldIn.getBlock(x, y + 1, z).isBlockSolid(worldIn, x, y + 1, z, ForgeDirection.UP.flag) && canHang);
+    public boolean canBlockStay(final World world, final int x, final int y, final int z) {
+        return world.getBlock(x, y - 1, z).isBlockSolid(world, x, y - 1, z, ForgeDirection.UP.flag)
+            || (world.getBlock(x, y + 1, z).isBlockSolid(world, x, y + 1, z, ForgeDirection.UP.flag) && canHang);
     }
 
     @Override
