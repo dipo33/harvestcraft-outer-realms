@@ -78,7 +78,7 @@ public class MutationNEIHandler extends TemplateRecipeHandler {
 
     private void drawAdditionalText(CachedMutationRecipe recipe) {
         var outputs = recipe.getOtherStacks();
-        float chance = (1f / (outputs.size() - 1)) * 100;
+        float chance = outputs.size() > 1 ? (100f / (outputs.size() - 1)) : 100f;
         DecimalFormat df = new DecimalFormat("0.##");
         String chanceStr = df.format(chance) + "%";
 
