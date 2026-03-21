@@ -127,8 +127,12 @@ public class MutationNEIHandler extends TemplateRecipeHandler {
     }
 
     private boolean areStacksSame(ItemStack a, ItemStack b) {
-        if (a == null || b == null) return false;
-        if (a.getItem() != b.getItem()) return false;
+        if (a == null || b == null) {
+            return false;
+        }
+        if (a.getItem() != b.getItem()) {
+            return false;
+        }
         return a.getItemDamage() == b.getItemDamage();
     }
 
