@@ -86,6 +86,9 @@ public record Mutation(Output output, List<Source> sources) {
                 // Render seeds for crop blocks (it looks better)
                 item = this.block.getItem(null, 0, 0, 0);
             }
+            if (item == null) {
+                throw new IllegalStateException("No item form found for mutation block: " + this.block);
+            }
 
             return new ItemStack(item, 1, this.placement.defaultPlacementMeta());
         }
