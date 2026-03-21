@@ -40,7 +40,7 @@ public class BlockBwSapling extends BlockSapling {
 
     @Override
     public int damageDropped(final int meta) {
-        return MathHelper.clamp_int(meta & 7, 0, VARIANTS.length);
+        return MathHelper.clamp_int(meta & 7, 0, VARIANTS.length - 1);
     }
 
     @Override
