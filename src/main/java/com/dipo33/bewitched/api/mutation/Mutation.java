@@ -26,12 +26,20 @@ public record Mutation(Output output, List<Source> sources) {
 
     public static Mutation mutate(MutationPoolType type, Block block, int meta, Random rand) {
         var pool = MutationRegistry.getPool(type);
+        if (pool == null) {
+            return null;
+        }
+
+        var mutations = pool.getMembers();
+        if (mutations.size() < 2) {
+            return null;
+        }
+
         var match = pool.getMutationFor(block, meta);
         if (match == null) {
             return null;
         }
 
-        var mutations = pool.getMembers();
         int resultMutationIdx = rand.nextInt(mutations.size() - 1);
         if (resultMutationIdx >= match.index()) {
             resultMutationIdx++;
