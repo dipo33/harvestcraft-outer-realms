@@ -22,24 +22,6 @@ public final class MutationRegistry {
         return POOLS.get(type);
     }
 
-    public static List<ItemStack> getOutputs(MutationPoolType type, ItemStack source) {
-        MutationPool pool = getPool(type);
-        List<ItemStack> outputs = new ArrayList<>();
-
-        if (pool == null || source == null) {
-            return outputs;
-        }
-
-        for (Mutation member : pool.getMembers()) {
-            ItemStack output = member.output().asStack();
-            if (!areStacksSame(source, output)) {
-                outputs.add(output);
-            }
-        }
-
-        return outputs;
-    }
-
     public static boolean isMember(MutationPoolType type, ItemStack stack) {
         MutationPool pool = getPool(type);
         if (pool == null || stack == null) {
