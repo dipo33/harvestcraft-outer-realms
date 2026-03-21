@@ -7,6 +7,7 @@ import com.dipo33.bewitched.api.mutation.Mutation;
 import com.dipo33.bewitched.api.mutation.MutationPoolType;
 import com.dipo33.bewitched.api.mutation.MutationRegistry;
 import com.dipo33.bewitched.init.BewitchedItems;
+import com.dipo33.bewitched.utils.ItemStackHelper;
 
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.PositionedStack;
@@ -109,7 +110,7 @@ public class MutationNEIHandler extends TemplateRecipeHandler {
     public void loadCraftingRecipes(ItemStack result) {
         for (var pool : MutationPoolType.values()) {
             for (var member : MutationRegistry.getMembers(pool)) {
-                if (areStacksSame(member.output().asStack(), result)) {
+                if (ItemStackHelper.areStacksSame(member.output().asStack(), result)) {
                     this.arecipes.add(new CachedMutationRecipe(pool));
                     break;
                 }
@@ -124,16 +125,6 @@ public class MutationNEIHandler extends TemplateRecipeHandler {
                 this.arecipes.add(new CachedMutationRecipe(pool));
             }
         }
-    }
-
-    private boolean areStacksSame(ItemStack a, ItemStack b) {
-        if (a == null || b == null) {
-            return false;
-        }
-        if (a.getItem() != b.getItem()) {
-            return false;
-        }
-        return a.getItemDamage() == b.getItemDamage();
     }
 
     public class CachedMutationRecipe extends CachedRecipe {

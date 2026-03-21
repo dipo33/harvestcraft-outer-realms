@@ -1,5 +1,7 @@
 package com.dipo33.bewitched.api.mutation;
 
+import com.dipo33.bewitched.utils.ItemStackHelper;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -33,7 +35,7 @@ public final class MutationRegistry {
         }
 
         for (Mutation member : pool.getMembers()) {
-            if (areStacksSame(member.output().asStack(), stack)) {
+            if (ItemStackHelper.areStacksSame(member.output().asStack(), stack)) {
                 return true;
             }
         }
@@ -48,7 +50,7 @@ public final class MutationRegistry {
         }
 
         for (ItemStack catalyst : pool.getCatalysts()) {
-            if (areStacksSame(catalyst, stack)) {
+            if (ItemStackHelper.areStacksSame(catalyst, stack)) {
                 return true;
             }
         }
@@ -64,19 +66,5 @@ public final class MutationRegistry {
     public static List<Mutation> getMembers(MutationPoolType type) {
         MutationPool pool = getPool(type);
         return pool == null ? new ArrayList<>() : new ArrayList<>(pool.getMembers());
-    }
-
-    private static boolean areStacksSame(ItemStack a, ItemStack b) {
-        if (a == null || b == null) {
-            return false;
-        }
-        if (a.getItem() != b.getItem()) {
-            return false;
-        }
-
-        int ma = a.getItemDamage();
-        int mb = b.getItemDamage();
-
-        return ma == mb;
     }
 }
