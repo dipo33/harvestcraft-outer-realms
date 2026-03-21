@@ -6,7 +6,7 @@ import com.dipo33.bewitched.Bewitched;
 import com.dipo33.bewitched.api.mutation.Mutation;
 import com.dipo33.bewitched.api.mutation.MutationPoolType;
 import com.dipo33.bewitched.api.mutation.MutationRegistry;
-import com.dipo33.bewitched.items.ItemRegistry;
+import com.dipo33.bewitched.init.BewitchedItems;
 
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.PositionedStack;
@@ -69,7 +69,7 @@ public class MutationNEIHandler extends TemplateRecipeHandler {
 
     private void drawProgressBar(CachedMutationRecipe recipe) {
         var catalyst = recipe.getIngredient();
-        if (catalyst.contains(ItemRegistry.MUTANDIS.get()) || !catalyst.contains(ItemRegistry.MUTANDIS_EXTREMIS.get())) {
+        if (catalyst.contains(BewitchedItems.MUTANDIS.get()) || !catalyst.contains(BewitchedItems.MUTANDIS_EXTREMIS.get())) {
             drawProgressBar(67, 22, 167, 0, 30, 20, 20, 1);
         } else {
             drawProgressBar(67, 22, 167, 21, 30, 20, 20, 1);

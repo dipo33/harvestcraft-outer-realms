@@ -17,7 +17,7 @@ public class BlockSmolderingPlant extends BlockBush {
     private final boolean canHang;
     private final SmolderConfig smolderConfig;
 
-    protected BlockSmolderingPlant(boolean canHang, SmolderConfig smolderConfig) {
+    public BlockSmolderingPlant(boolean canHang, SmolderConfig smolderConfig) {
         super(Material.plants);
         this.canHang = canHang;
         this.smolderConfig = smolderConfig;

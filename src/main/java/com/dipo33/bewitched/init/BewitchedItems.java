@@ -1,34 +1,35 @@
-package com.dipo33.bewitched.items;
+package com.dipo33.bewitched.init;
 
 import com.dipo33.bewitched.Bewitched;
-import com.dipo33.bewitched.block.BlockRegistry;
 import com.dipo33.bewitched.data.ObjectHolder;
+import com.dipo33.bewitched.items.ItemMutandis;
+import com.dipo33.bewitched.items.ItemWaterSeeds;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 
-public class ItemRegistry {
+public class BewitchedItems {
 
     // Seeds
     public static final ObjectHolder<Item> BELLADONNA_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.BELLADONNA_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
+        new ItemSeeds(BewitchedBlocks.BELLADONNA_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> WOLFSBANE_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.WOLFSBANE_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
+        new ItemSeeds(BewitchedBlocks.WOLFSBANE_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> WATER_ARTICHOKE_SEED = new ObjectHolder<>(() ->
-        new ItemWaterSeeds(BlockRegistry.WATER_ARTICHOKE_CROP.get(), Blocks.water).setCreativeTab(Bewitched.CREATIVE_TAB)
+        new ItemWaterSeeds(BewitchedBlocks.WATER_ARTICHOKE_CROP.get(), Blocks.water).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> MANDRAKE_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.MANDRAKE_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
+        new ItemSeeds(BewitchedBlocks.MANDRAKE_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> SNOW_WISP_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.SNOW_WISP_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
+        new ItemSeeds(BewitchedBlocks.SNOW_WISP_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> GARLIC = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.GARLIC_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
+        new ItemSeeds(BewitchedBlocks.GARLIC_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
 
     // Crops

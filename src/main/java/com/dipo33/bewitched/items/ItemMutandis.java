@@ -5,6 +5,7 @@ import com.dipo33.bewitched.api.mutation.MutationRegistry;
 import com.dipo33.bewitched.client.effect.EffectPlayer;
 import com.dipo33.bewitched.client.effect.Effects;
 import com.dipo33.bewitched.api.mutation.Mutation;
+import com.dipo33.bewitched.init.BewitchedItems;
 import com.dipo33.bewitched.network.BwNetwork;
 import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 import com.dipo33.bewitched.sound.Sounds;
@@ -37,7 +38,7 @@ public class ItemMutandis extends Item {
 
         if (this.applyMutandis(stack, world, x, y, z)) {
             if (!world.isRemote) {
-                if (this == ItemRegistry.MUTANDIS_EXTREMIS.get()) {
+                if (this == BewitchedItems.MUTANDIS_EXTREMIS.get()) {
                     EffectPlayer.playFX(Effects.MUTANDIS_EXTREMIS_FX, world, x, y, z, 32);
                 } else {
                     EffectPlayer.playFX(Effects.MUTANDIS_FX, world, x, y, z, 32);

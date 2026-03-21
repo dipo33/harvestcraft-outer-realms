@@ -7,7 +7,7 @@ import net.minecraftforge.common.IShearable;
 
 public class BlockSpanishMoss extends BlockVine implements IShearable {
 
-    protected BlockSpanishMoss() {
+    public BlockSpanishMoss() {
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.dipo33.bewitched;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.dipo33.bewitched.items.ItemRegistry;
+import com.dipo33.bewitched.init.BewitchedItems;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -26,7 +26,7 @@ public class Bewitched {
 
     public static final CreativeTabs CREATIVE_TAB = new CreativeTabs("bewitched") {
         public Item getTabIconItem() {
-            return ItemRegistry.BELLADONNA_FLOWER.get();
+            return BewitchedItems.BELLADONNA_FLOWER.get();
         }
     };
 

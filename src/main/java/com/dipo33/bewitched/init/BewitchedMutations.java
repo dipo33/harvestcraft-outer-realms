@@ -4,9 +4,7 @@ import com.dipo33.bewitched.api.mutation.Mutation;
 import com.dipo33.bewitched.api.mutation.MutationPool;
 import com.dipo33.bewitched.api.mutation.MutationPoolType;
 import com.dipo33.bewitched.api.mutation.MutationRegistry;
-import com.dipo33.bewitched.block.BlockRegistry;
 import com.dipo33.bewitched.config.Config;
-import com.dipo33.bewitched.items.ItemRegistry;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -27,7 +25,7 @@ public class BewitchedMutations {
             MutationPoolType.MUTANDIS,
             "nei.bewitched.mutation.mutandis"
         );
-        pool.addCatalyst(new ItemStack(ItemRegistry.MUTANDIS.get()));
+        pool.addCatalyst(new ItemStack(BewitchedItems.MUTANDIS.get()));
 
         for (Mutation mutation : Config.mutandisAdditionalMutations) {
             pool.addMember(mutation);
@@ -39,12 +37,12 @@ public class BewitchedMutations {
         pool.addMember(Mutation.primitiveMutation(Blocks.yellow_flower, 0));
         pool.addMember(Mutation.primitiveMutation(Blocks.red_flower, 0));
         pool.addMember(Mutation.primitiveMutation(Blocks.waterlily, 0));
-        pool.addMember(Mutation.primitiveMutation(BlockRegistry.EMBER_MOSS.get(), 0));
+        pool.addMember(Mutation.primitiveMutation(BewitchedBlocks.EMBER_MOSS.get(), 0));
 
         pool.addMember(new Mutation(
-            new Mutation.Output(BlockRegistry.SPANISH_MOSS.get(), Mutation.wallStrategy()),
+            new Mutation.Output(BewitchedBlocks.SPANISH_MOSS.get(), Mutation.wallStrategy()),
             Collections.singletonList(
-                Mutation.Source.anyMeta(BlockRegistry.SPANISH_MOSS.get())
+                Mutation.Source.anyMeta(BewitchedBlocks.SPANISH_MOSS.get())
             )
         ));
 
@@ -94,24 +92,24 @@ public class BewitchedMutations {
 
         // Bewitched Saplings
         pool.addMember(new Mutation(
-            new Mutation.Output(BlockRegistry.SAPLING.get(), Mutation.basicStrategy(0)),
+            new Mutation.Output(BewitchedBlocks.SAPLING.get(), Mutation.basicStrategy(0)),
             Arrays.asList(
-                Mutation.Source.exact(BlockRegistry.SAPLING.get(), 0),
-                Mutation.Source.exact(BlockRegistry.SAPLING.get(), 8)
+                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 0),
+                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 8)
             )
         ));
         pool.addMember(new Mutation(
-            new Mutation.Output(BlockRegistry.SAPLING.get(), Mutation.basicStrategy(1)),
+            new Mutation.Output(BewitchedBlocks.SAPLING.get(), Mutation.basicStrategy(1)),
             Arrays.asList(
-                Mutation.Source.exact(BlockRegistry.SAPLING.get(), 1),
-                Mutation.Source.exact(BlockRegistry.SAPLING.get(), 9)
+                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 1),
+                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 9)
             )
         ));
         pool.addMember(new Mutation(
-            new Mutation.Output(BlockRegistry.SAPLING.get(), Mutation.basicStrategy(2)),
+            new Mutation.Output(BewitchedBlocks.SAPLING.get(), Mutation.basicStrategy(2)),
             Arrays.asList(
-                Mutation.Source.exact(BlockRegistry.SAPLING.get(), 2),
-                Mutation.Source.exact(BlockRegistry.SAPLING.get(), 10)
+                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 2),
+                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 10)
             )
         ));
     }
@@ -121,7 +119,7 @@ public class BewitchedMutations {
             MutationPoolType.MUTANDIS_EXTREMIS,
             "nei.bewitched.mutation.mutandis_extremis"
         );
-        pool.addCatalyst(new ItemStack(ItemRegistry.MUTANDIS_EXTREMIS.get()));
+        pool.addCatalyst(new ItemStack(BewitchedItems.MUTANDIS_EXTREMIS.get()));
 
         for (Mutation mutation : MutationRegistry.getMembers(MutationPoolType.MUTANDIS)) {
             pool.addMember(mutation);
@@ -138,9 +136,9 @@ public class BewitchedMutations {
         pool.addMember(Mutation.primitiveAnyMetaMutation(Blocks.cactus, 0));
         pool.addMember(Mutation.primitiveAnyMetaMutation(Blocks.pumpkin_stem, 0));
         pool.addMember(Mutation.primitiveAnyMetaMutation(Blocks.melon_stem, 0));
-        pool.addMember(Mutation.primitiveAnyMetaMutation(BlockRegistry.MANDRAKE_CROP.get(), 0));
-        pool.addMember(Mutation.primitiveAnyMetaMutation(BlockRegistry.BELLADONNA_CROP.get(), 0));
-        pool.addMember(Mutation.primitiveAnyMetaMutation(BlockRegistry.WATER_ARTICHOKE_CROP.get(), 0));
+        pool.addMember(Mutation.primitiveAnyMetaMutation(BewitchedBlocks.MANDRAKE_CROP.get(), 0));
+        pool.addMember(Mutation.primitiveAnyMetaMutation(BewitchedBlocks.BELLADONNA_CROP.get(), 0));
+        pool.addMember(Mutation.primitiveAnyMetaMutation(BewitchedBlocks.WATER_ARTICHOKE_CROP.get(), 0));
     }
 
     private static void registerMutandisExtremisGrassMutations() {
@@ -148,7 +146,7 @@ public class BewitchedMutations {
             MutationPoolType.MUTANDIS_EXTREMIS_GRASS,
             "nei.bewitched.mutation.mutandis_extremis_grass"
         );
-        pool.addCatalyst(new ItemStack(ItemRegistry.MUTANDIS_EXTREMIS.get()));
+        pool.addCatalyst(new ItemStack(BewitchedItems.MUTANDIS_EXTREMIS.get()));
 
         for (Mutation mutation : Config.mutandisExtremisAdditionalGrassMutations) {
             pool.addMember(mutation);
@@ -163,8 +161,8 @@ public class BewitchedMutations {
             MutationPoolType.FLOWER_POT,
             "nei.bewitched.mutation.flower_pot"
         );
-        pool.addCatalyst(new ItemStack(ItemRegistry.MUTANDIS.get()));
-        pool.addCatalyst(new ItemStack(ItemRegistry.MUTANDIS_EXTREMIS.get()));
+        pool.addCatalyst(new ItemStack(BewitchedItems.MUTANDIS.get()));
+        pool.addCatalyst(new ItemStack(BewitchedItems.MUTANDIS_EXTREMIS.get()));
 
         for (Mutation mutation : Config.mutandisAdditionalFlowerPotMutations) {
             pool.addMember(mutation);
