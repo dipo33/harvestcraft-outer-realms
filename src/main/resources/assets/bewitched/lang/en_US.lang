@@ -29,3 +29,7 @@ tile.sapling.alder.name=Alder Sapling
 tile.sapling.hawthorn.name=Hawthorn Sapling
 
 itemGroup.bewitched=Bewitched
+
+bewitched.nei.mutation=Mutandis Mutations
+bewitched.nei.mutation.chance=Chance for each possible result: %s
+bewitched.nei.mutation.flower_pot=This mutation occurs within a flower pot.

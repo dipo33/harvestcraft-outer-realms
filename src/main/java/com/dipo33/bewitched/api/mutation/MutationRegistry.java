@@ -72,7 +72,7 @@ public final class MutationRegistry {
 
     public static List<ItemStack> getCatalysts(MutationPoolType type) {
         MutationPool pool = getPool(type);
-        return pool == null ? new ArrayList<ItemStack>() : new ArrayList<ItemStack>(pool.getCatalysts());
+        return pool == null ? new ArrayList<>() : new ArrayList<>(pool.getCatalysts());
     }
 
     public static List<Mutation> getMembers(MutationPoolType type) {

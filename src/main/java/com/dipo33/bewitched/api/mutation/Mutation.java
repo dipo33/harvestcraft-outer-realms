@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCrops;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -73,6 +74,11 @@ public record Mutation(Output output, List<Source> sources) {
     public record Output(Block block, PlacementStrategy placement) {
         public ItemStack asStack() {
             Item item = Item.getItemFromBlock(this.block);
+            if (item == null || block instanceof BlockCrops) {
+                // Render seeds for crop blocks (it looks better)
+                item = this.block.getItem(null, 0, 0, 0);
+            }
+
             return new ItemStack(item, 1, this.placement.defaultPlacementMeta());
         }
     }
