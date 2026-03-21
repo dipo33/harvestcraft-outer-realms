@@ -58,8 +58,9 @@ public class ItemMutandis extends Item {
     ) {
         if (!world.isRemote) {
             int meta = mutationOutput.placement().placementMeta(world, x, y, z);
-            world.setBlock(x, y, z, mutationOutput.block(), meta, 2);
-            catalyst.stackSize--;
+            if (world.setBlock(x, y, z, mutationOutput.block(), meta, 2)) {
+                catalyst.stackSize--;
+            }
         }
         return true;
     }
