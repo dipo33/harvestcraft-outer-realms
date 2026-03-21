@@ -51,14 +51,14 @@ public class BlockSmolderingPlant extends BlockBush {
 
         // up to 4 "walk" attempts; update pos when candidate is valid
         for (int i = 0; i < 4; i++) {
-            if (canPlaceAt(world, candidate)) {
+            if (canSpreadAt(world, candidate)) {
                 pos = candidate;
             }
             candidate = randomNearby(pos, rng);
         }
 
         // final placement attempt
-        if (canPlaceAt(world, candidate)) {
+        if (canSpreadAt(world, candidate)) {
             world.setBlock(candidate.x(), candidate.y(), candidate.z(), this, 0, 2);
         }
     }
@@ -96,7 +96,7 @@ public class BlockSmolderingPlant extends BlockBush {
         return new Position(nx, ny, nz);
     }
 
-    private boolean canPlaceAt(World world, Position pos) {
+    private boolean canSpreadAt(World world, Position pos) {
         Block block = world.getBlock(pos.x(), pos.y() - 1, pos.z());
         return world.isAirBlock(pos.x(), pos.y(), pos.z()) && (
             block == Blocks.grass || block == Blocks.dirt || block == Blocks.farmland || block == Blocks.sand
