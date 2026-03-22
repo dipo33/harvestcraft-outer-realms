@@ -11,6 +11,7 @@ import com.dipo33.bewitched.network.message.EffectPlayMsg;
 import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -51,6 +52,8 @@ public class CommonProxy {
         BewitchedRecipes.init();
         BewitchedMutations.init();
         SeedDrops.dropSeedsFromGrass();
+
+        FMLInterModComms.sendMessage("Waila", "register", "com.dipo33.bewitched.integration.waila.HUDHandlerBewitched.register");
     }
 
     /**

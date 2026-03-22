@@ -162,7 +162,7 @@ public class BwBlockCrops extends BlockCrops {
      * @return the Item dropped as the crop's harvest product
      */
     @Override
-    protected Item func_149865_P() {
+    public Item func_149865_P() {
         return this.crop.get();
     }
 
