@@ -10,6 +10,10 @@ import net.minecraft.world.World;
 
 @SideOnly(Side.CLIENT)
 public class MutandisFX implements IEffect {
+    private static final double SPAWN_RADIUS = 0.8D;
+    private static final int PARTICLE_COUNT = 32;
+    private static final double HORIZONTAL_MOTION_SCALE = 0.05D;
+    private static final double VERTICAL_MOTION_SCALE = 0.03D;
 
     private final EntityMutandisFX.Variant variant;
 
@@ -19,17 +23,14 @@ public class MutandisFX implements IEffect {
 
     @Override
     public void play(final World world, final double x, final double y, final double z) {
-        double radius = 0.8;
-        int count = 32;
+        for (int i = 0; i < PARTICLE_COUNT; i++) {
+            double offsetX = (world.rand.nextDouble() - 0.5) * 2 * SPAWN_RADIUS;
+            double offsetY = (world.rand.nextDouble() - 0.5) * SPAWN_RADIUS;
+            double offsetZ = (world.rand.nextDouble() - 0.5) * 2 * SPAWN_RADIUS;
 
-        for (int i = 0; i < count; i++) {
-            double offsetX = (world.rand.nextDouble() - 0.5) * 2 * radius;
-            double offsetY = (world.rand.nextDouble() - 0.5) * radius;
-            double offsetZ = (world.rand.nextDouble() - 0.5) * 2 * radius;
-
-            double motionX = (world.rand.nextDouble() - 0.5) * 0.05;
-            double motionY = world.rand.nextDouble() * 0.03;
-            double motionZ = (world.rand.nextDouble() - 0.5) * 0.05;
+            double motionX = (world.rand.nextDouble() - 0.5) * HORIZONTAL_MOTION_SCALE;
+            double motionY = world.rand.nextDouble() * VERTICAL_MOTION_SCALE;
+            double motionZ = (world.rand.nextDouble() - 0.5) * HORIZONTAL_MOTION_SCALE;
 
             EntityFX fx = new EntityMutandisFX(
                 world, x + 0.5 + offsetX, y + 0.5 + offsetY, z + 0.5 + offsetZ, motionX, motionY, motionZ, this.variant
