@@ -6,7 +6,6 @@ import com.dipo33.bewitched.api.mutation.MutationPoolType;
 import com.dipo33.bewitched.api.mutation.MutationRegistry;
 import com.dipo33.bewitched.config.Config;
 
-import java.util.Arrays;
 import java.util.Collections;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -47,71 +46,17 @@ public class BewitchedMutations {
         ));
 
         // Vanilla Saplings
-        pool.addMember(new Mutation(
-            new Mutation.Output(Blocks.sapling, Mutation.basicStrategy(0)),
-            Arrays.asList(
-                Mutation.Source.exact(Blocks.sapling, 0),
-                Mutation.Source.exact(Blocks.sapling, 8)
-            )
-        ));
-        pool.addMember(new Mutation(
-            new Mutation.Output(Blocks.sapling, Mutation.basicStrategy(1)),
-            Arrays.asList(
-                Mutation.Source.exact(Blocks.sapling, 1),
-                Mutation.Source.exact(Blocks.sapling, 9)
-            )
-        ));
-        pool.addMember(new Mutation(
-            new Mutation.Output(Blocks.sapling, Mutation.basicStrategy(2)),
-            Arrays.asList(
-                Mutation.Source.exact(Blocks.sapling, 2),
-                Mutation.Source.exact(Blocks.sapling, 10)
-            )
-        ));
-        pool.addMember(new Mutation(
-            new Mutation.Output(Blocks.sapling, Mutation.basicStrategy(3)),
-            Arrays.asList(
-                Mutation.Source.exact(Blocks.sapling, 3),
-                Mutation.Source.exact(Blocks.sapling, 11)
-            )
-        ));
-        pool.addMember(new Mutation(
-            new Mutation.Output(Blocks.sapling, Mutation.basicStrategy(4)),
-            Arrays.asList(
-                Mutation.Source.exact(Blocks.sapling, 4),
-                Mutation.Source.exact(Blocks.sapling, 12)
-            )
-        ));
-        pool.addMember(new Mutation(
-            new Mutation.Output(Blocks.sapling, Mutation.basicStrategy(5)),
-            Arrays.asList(
-                Mutation.Source.exact(Blocks.sapling, 5),
-                Mutation.Source.exact(Blocks.sapling, 13)
-            )
-        ));
+        pool.addMember(Mutation.saplingMutation(Blocks.sapling, 0));
+        pool.addMember(Mutation.saplingMutation(Blocks.sapling, 1));
+        pool.addMember(Mutation.saplingMutation(Blocks.sapling, 2));
+        pool.addMember(Mutation.saplingMutation(Blocks.sapling, 3));
+        pool.addMember(Mutation.saplingMutation(Blocks.sapling, 4));
+        pool.addMember(Mutation.saplingMutation(Blocks.sapling, 5));
 
         // Bewitched Saplings
-        pool.addMember(new Mutation(
-            new Mutation.Output(BewitchedBlocks.SAPLING.get(), Mutation.basicStrategy(0)),
-            Arrays.asList(
-                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 0),
-                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 8)
-            )
-        ));
-        pool.addMember(new Mutation(
-            new Mutation.Output(BewitchedBlocks.SAPLING.get(), Mutation.basicStrategy(1)),
-            Arrays.asList(
-                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 1),
-                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 9)
-            )
-        ));
-        pool.addMember(new Mutation(
-            new Mutation.Output(BewitchedBlocks.SAPLING.get(), Mutation.basicStrategy(2)),
-            Arrays.asList(
-                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 2),
-                Mutation.Source.exact(BewitchedBlocks.SAPLING.get(), 10)
-            )
-        ));
+        pool.addMember(Mutation.saplingMutation(BewitchedBlocks.SAPLING.get(), 0));
+        pool.addMember(Mutation.saplingMutation(BewitchedBlocks.SAPLING.get(), 1));
+        pool.addMember(Mutation.saplingMutation(BewitchedBlocks.SAPLING.get(), 2));
     }
 
     private static void registerMutandisExtremisMutations() {

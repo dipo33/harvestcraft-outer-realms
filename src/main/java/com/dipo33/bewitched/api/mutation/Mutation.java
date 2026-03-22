@@ -2,6 +2,7 @@ package com.dipo33.bewitched.api.mutation;
 
 import com.github.bsideup.jabel.Desugar;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -108,6 +109,16 @@ public record Mutation(Output output, List<Source> sources) {
             new Output(block, basicStrategy(meta)),
             Collections.singletonList(
                 Source.anyMeta(block)
+            )
+        );
+    }
+
+    public static Mutation saplingMutation(final Block block, int meta) {
+        return new Mutation(
+            new Mutation.Output(block, Mutation.basicStrategy(meta)),
+            Arrays.asList(
+                Mutation.Source.exact(block, meta),
+                Mutation.Source.exact(block, meta + 8)
             )
         );
     }
