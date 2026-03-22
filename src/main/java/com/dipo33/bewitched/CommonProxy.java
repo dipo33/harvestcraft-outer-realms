@@ -1,10 +1,17 @@
 package com.dipo33.bewitched;
 
-import com.dipo33.bewitched.block.BlockRegistry;
-import com.dipo33.bewitched.items.ItemRegistry;
+import com.dipo33.bewitched.init.BewitchedBlocks;
+import com.dipo33.bewitched.config.Config;
+import com.dipo33.bewitched.init.BewitchedMutations;
+import com.dipo33.bewitched.init.BewitchedRecipes;
+import com.dipo33.bewitched.init.BewitchedItems;
 import com.dipo33.bewitched.items.SeedDrops;
+import com.dipo33.bewitched.network.BwNetwork;
+import com.dipo33.bewitched.network.message.EffectPlayMsg;
+import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -12,30 +19,44 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 public class CommonProxy {
 
     /**
-     * Handle the mod's pre-initialization lifecycle event.
-     * <p>
-     * Delegates pre-initialization work (configuration loading and early registration) to the sided proxy.
+     * Perform mod pre-initialization: register blocks and items, set up networking and client message handlers,
+     * and synchronize the mod configuration.
      *
-     * @param event
-     *     the Forge pre-initialization event containing mod configuration and environment data
+     * @param event the Forge pre-initialization event providing the suggested configuration file and environment data
      */
     public void preInit(FMLPreInitializationEvent event) {
-        BlockRegistry.registerBlocks();
-        ItemRegistry.registerItems();
+        BewitchedBlocks.registerBlocks();
+        BewitchedItems.registerItems();
+        BwNetwork.register();
+        this.registerClientMessages();
 
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
     }
 
     /**
-     * Handle the mod's initialization lifecycle event.
-     * <p>
-     * Delegates initialization work (recipe registration and data structure building) to the sided proxy.
+     * Registers client-side network message handlers used by the mod.
      *
-     * @param event
-     *     the Forge initialization event containing mod configuration and environment data
+     * Specifically registers the client handlers for EffectPlayMsg (EffectPlayMsg.SafeHandler)
+     * and UpdateFlowerPotMsg (UpdateFlowerPotMsg.SafeHandler).
+     */
+    protected void registerClientMessages() {
+        BwNetwork.registerClientMessage(EffectPlayMsg.SafeHandler.class, EffectPlayMsg.class);
+        BwNetwork.registerClientMessage(UpdateFlowerPotMsg.SafeHandler.class, UpdateFlowerPotMsg.class);
+    }
+
+    /**
+     * Initialize core mod systems and perform inter-mod registration.
+     *
+     * Initializes recipes and mutation data, triggers grass seed drops, and sends a Waila registration message.
+     *
+     * @param event the Forge initialization event
      */
     public void init(FMLInitializationEvent event) {
+        BewitchedRecipes.init();
+        BewitchedMutations.init();
         SeedDrops.dropSeedsFromGrass();
+
+        FMLInterModComms.sendMessage("Waila", "register", "com.dipo33.bewitched.integration.waila.HUDHandlerBewitched.register");
     }
 
     /**

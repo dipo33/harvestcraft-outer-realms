@@ -3,12 +3,16 @@ package com.dipo33.bewitched;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.dipo33.bewitched.init.BewitchedItems;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 
 @Mod(modid = Bewitched.MODID, version = Tags.VERSION, name = Bewitched.MOD_NAME, acceptedMinecraftVersions = "[1.7.10]")
 public class Bewitched {
@@ -19,6 +23,17 @@ public class Bewitched {
 
     @SidedProxy(clientSide = "com.dipo33.bewitched.ClientProxy", serverSide = "com.dipo33.bewitched.CommonProxy")
     public static CommonProxy proxy;
+
+    public static final CreativeTabs CREATIVE_TAB = new CreativeTabs("bewitched") {
+        /**
+         * Provides the item used as the icon for the mod's creative tab.
+         *
+         * @return the Item displayed as the creative tab icon (Belladonna Flower)
+         */
+        public Item getTabIconItem() {
+            return BewitchedItems.BELLADONNA_FLOWER.get();
+        }
+    };
 
     /**
      * Handle the mod's pre-initialization lifecycle event.
