@@ -44,7 +44,7 @@ public class BwBlockCrops extends BlockCrops {
     private IIcon[] icons;
 
     /**
-     * Create a BwBlockCrops configured with the provided seed and crop item holders.
+     * Creates a BwBlockCrops configured with the provided seed and crop item holders.
      *
      * @param seed
      *     holder for the seed Item; must not be null

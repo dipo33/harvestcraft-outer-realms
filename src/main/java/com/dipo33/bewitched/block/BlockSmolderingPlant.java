@@ -41,11 +41,10 @@ public class BlockSmolderingPlant extends BlockBush {
             return;
         }
 
-        if (isTooDenseNearby(world, x, y, z)) {
+        Position pos = new Position(x, y, z);
+        if (isTooDenseNearby(world, pos)) {
             return;
         }
-
-        Position pos = new Position(x, y, z);
 
         // initial candidate near the original block
         Position candidate = randomNearby(pos, rng);
@@ -64,18 +63,30 @@ public class BlockSmolderingPlant extends BlockBush {
         }
     }
 
+    /**
+     * Returns whether this plant should attempt to spread on this random tick.
+     *
+     * @param rng
+     *     the randomness source
+     * @return {@code true} if mutation should be attempted
+     */
     private boolean shouldAttemptSpread(Random rng) {
         return rng.nextInt(15) == 0;
     }
 
-    private boolean isTooDenseNearby(World world, int x, int y, int z) {
+    /**
+     * Returns whether at least five blocks of this type exist near origin.
+     *
+     * @return {@code true} if the nearby area is too dense
+     */
+    private boolean isTooDenseNearby(World world, Position pos) {
         final int radius = 4;
 
         // Includes the origin block in the density count
         int remaining = 5;
-        for (int xi = x - radius; xi <= x + radius; xi++) {
-            for (int zi = z - radius; zi <= z + radius; zi++) {
-                for (int yi = y - 1; yi <= y + 1; yi++) {
+        for (int xi = pos.x() - radius; xi <= pos.x() + radius; xi++) {
+            for (int zi = pos.z() - radius; zi <= pos.z() + radius; zi++) {
+                for (int yi = pos.y() - 1; yi <= pos.y() + 1; yi++) {
                     if (world.getBlock(xi, yi, zi) == this) {
                         remaining--;
                         if (remaining <= 0) {
@@ -88,6 +99,11 @@ public class BlockSmolderingPlant extends BlockBush {
         return false;
     }
 
+    /**
+     * Returns a random nearby position around {@code origin}.
+     *
+     * @return a nearby position with small random offsets
+     */
     private Position randomNearby(Position origin, Random rng) {
         // [-1, 1]
         int nx = origin.x() + rng.nextInt(3) - 1;
@@ -98,6 +114,11 @@ public class BlockSmolderingPlant extends BlockBush {
         return new Position(nx, ny, nz);
     }
 
+    /**
+     * Returns whether this plant can spread at {@code pos}.
+     *
+     * @return {@code true} if the target is air and the block below supports placement
+     */
     private boolean canSpreadAt(World world, Position pos) {
         Block block = world.getBlock(pos.x(), pos.y() - 1, pos.z());
         return world.isAirBlock(pos.x(), pos.y(), pos.z()) && (
@@ -122,6 +143,13 @@ public class BlockSmolderingPlant extends BlockBush {
         }
     }
 
+    /**
+     * Smolder effect configuration.
+     *
+     * @param intensity the effect intensity
+     * @param center the center point
+     * @param horizontalVariation the horizontal variation
+     */
     @Desugar
     public record SmolderConfig(float intensity, float center, float horizontalVariation) {
     }
