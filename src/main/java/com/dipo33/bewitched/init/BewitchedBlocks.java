@@ -1,7 +1,7 @@
 package com.dipo33.bewitched.init;
 
 import com.dipo33.bewitched.Bewitched;
-import com.dipo33.bewitched.block.BlockBwSapling;
+import com.dipo33.bewitched.block.BlockBewitchedSapling;
 import com.dipo33.bewitched.block.BlockSmolderingPlant;
 import com.dipo33.bewitched.block.BlockSpanishMoss;
 import com.dipo33.bewitched.block.BwBlockCrops;
@@ -66,7 +66,7 @@ public class BewitchedBlocks {
             .setLightLevel(0.4375F)
     );
     public static final ObjectHolder<Block> SAPLING = new ObjectHolder<>(() ->
-        new BlockBwSapling()
+        new BlockBewitchedSapling()
             .setCreativeTab(Bewitched.CREATIVE_TAB)
             .setStepSound(Block.soundTypeGrass)
             .setHardness(0.0F)

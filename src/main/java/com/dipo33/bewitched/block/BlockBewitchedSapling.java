@@ -18,7 +18,7 @@ import net.minecraft.world.gen.feature.WorldGenMegaPineTree;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class BlockBwSapling extends BlockSapling {
+public class BlockBewitchedSapling extends BlockSapling {
     public static final String[] VARIANTS = {"rowan", "alder", "hawthorn"};
 
     @SideOnly(Side.CLIENT)
