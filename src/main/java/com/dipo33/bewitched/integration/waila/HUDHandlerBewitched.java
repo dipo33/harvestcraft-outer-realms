@@ -37,7 +37,11 @@ public class HUDHandlerBewitched implements IWailaDataProvider {
         if (block instanceof BwBlockCrops) {
             String name = DisplayUtil.itemDisplayNameShort(new ItemStack(block));
             if (name != null) {
-                currentTip.set(0, name);
+                if (currentTip.isEmpty()) {
+                    currentTip.add(name);
+                } else {
+                    currentTip.set(0, name);
+                }
             }
         }
 
