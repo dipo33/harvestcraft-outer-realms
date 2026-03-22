@@ -69,8 +69,9 @@ public class BlockSmolderingPlant extends BlockBush {
 
     private boolean isTooDenseNearby(World world, int x, int y, int z) {
         final int radius = 4;
-        int remaining = 5;
 
+        // Includes the origin block in the density count
+        int remaining = 5;
         for (int xi = x - radius; xi <= x + radius; xi++) {
             for (int zi = z - radius; zi <= z + radius; zi++) {
                 for (int yi = y - 1; yi <= y + 1; yi++) {
