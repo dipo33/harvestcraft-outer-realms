@@ -5,6 +5,7 @@ import com.github.bsideup.jabel.Desugar;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.Objects;
 import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -20,7 +21,7 @@ public class BlockSmolderingPlant extends BlockBush {
     public BlockSmolderingPlant(boolean canHang, SmolderConfig smolderConfig) {
         super(Material.plants);
         this.canHang = canHang;
-        this.smolderConfig = smolderConfig;
+        this.smolderConfig = Objects.requireNonNull(smolderConfig, "smolderConfig must not be null");
     }
 
     public BlockSmolderingPlant withBlockBounds(float minX, float minY, float minZ, float maxX, float maxY, float maxZ) {
@@ -122,5 +123,6 @@ public class BlockSmolderingPlant extends BlockBush {
     }
 
     @Desugar
-    public record SmolderConfig(float intensity, float center, float horizontalVariation) {}
+    public record SmolderConfig(float intensity, float center, float horizontalVariation) {
+    }
 }
