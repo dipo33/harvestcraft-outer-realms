@@ -12,7 +12,7 @@ public class ItemWaterSeeds extends ItemSeeds {
     private final Block crop;
 
     /**
-     * Creates a WaterItemSeeds configured to place the specified crop when planted.
+     * Creates a ItemWaterSeeds configured to place the specified crop when planted.
      *
      * @param crop
      *     the Block that will be placed as the crop when this seed is planted
