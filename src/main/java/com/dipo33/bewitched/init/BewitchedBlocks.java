@@ -4,7 +4,7 @@ import com.dipo33.bewitched.Bewitched;
 import com.dipo33.bewitched.block.BlockBewitchedSapling;
 import com.dipo33.bewitched.block.BlockSmolderingPlant;
 import com.dipo33.bewitched.block.BlockSpanishMoss;
-import com.dipo33.bewitched.block.BwBlockCrops;
+import com.dipo33.bewitched.block.BlockBewitchedCrops;
 import com.dipo33.bewitched.data.ObjectHolder;
 import com.dipo33.bewitched.items.ItemSaplingMultiTexture;
 
@@ -17,29 +17,29 @@ import net.minecraftforge.common.EnumPlantType;
 public class BewitchedBlocks {
     // Crops
     public static final ObjectHolder<Block> BELLADONNA_CROP = new ObjectHolder<>(() ->
-        new BwBlockCrops(BewitchedItems.BELLADONNA_SEED, BewitchedItems.BELLADONNA_FLOWER)
+        new BlockBewitchedCrops(BewitchedItems.BELLADONNA_SEEDS, BewitchedItems.BELLADONNA_FLOWER)
             .setStages(5)
     );
     public static final ObjectHolder<Block> WOLFSBANE_CROP = new ObjectHolder<>(() ->
-        new BwBlockCrops(BewitchedItems.WOLFSBANE_SEED, BewitchedItems.WOLFSBANE_FLOWER)
+        new BlockBewitchedCrops(BewitchedItems.WOLFSBANE_SEEDS, BewitchedItems.WOLFSBANE_FLOWER)
             .setStages(8)
     );
     public static final ObjectHolder<Block> WATER_ARTICHOKE_CROP = new ObjectHolder<>(() ->
-        new BwBlockCrops(BewitchedItems.WATER_ARTICHOKE_SEED, BewitchedItems.WATER_ARTICHOKE_GLOBE)
+        new BlockBewitchedCrops(BewitchedItems.WATER_ARTICHOKE_SEEDS, BewitchedItems.WATER_ARTICHOKE_GLOBE)
             .setStages(5)
             .setPlantType(EnumPlantType.Water)
     );
     public static final ObjectHolder<Block> MANDRAKE_CROP = new ObjectHolder<>(() ->
-        new BwBlockCrops(BewitchedItems.MANDRAKE_SEED, BewitchedItems.MANDRAKE_ROOT)
+        new BlockBewitchedCrops(BewitchedItems.MANDRAKE_SEEDS, BewitchedItems.MANDRAKE_ROOT)
             .setStages(5)
     );
     public static final ObjectHolder<Block> SNOW_WISP_CROP = new ObjectHolder<>(() ->
-        new BwBlockCrops(BewitchedItems.SNOW_WISP_SEED, new ObjectHolder<>(() -> Items.snowball))
+        new BlockBewitchedCrops(BewitchedItems.SNOW_WISP_SEEDS, new ObjectHolder<>(() -> Items.snowball))
             .setStages(5)
             .addAdditionalDrops(BewitchedItems.ICY_NEEDLE, 0.1D)
     );
     public static final ObjectHolder<Block> GARLIC_CROP = new ObjectHolder<>(() ->
-        new BwBlockCrops(BewitchedItems.GARLIC, BewitchedItems.GARLIC)
+        new BlockBewitchedCrops(BewitchedItems.GARLIC, BewitchedItems.GARLIC)
             .setStages(6)
     );
 

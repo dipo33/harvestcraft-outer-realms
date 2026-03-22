@@ -1,6 +1,6 @@
 package com.dipo33.bewitched.integration.waila;
 
-import com.dipo33.bewitched.block.BwBlockCrops;
+import com.dipo33.bewitched.block.BlockBewitchedCrops;
 import com.dipo33.bewitched.init.BewitchedBlocks;
 import com.dipo33.bewitched.init.BewitchedItems;
 
@@ -23,7 +23,7 @@ public class HUDHandlerBewitched implements IWailaDataProvider {
         Block block = accessor.getBlock();
         if (block == BewitchedBlocks.SNOW_WISP_CROP.get()) {
             return new ItemStack(BewitchedItems.ICY_NEEDLE.get());
-        } else if (block instanceof BwBlockCrops blockCrops) {
+        } else if (block instanceof BlockBewitchedCrops blockCrops) {
             return new ItemStack(blockCrops.func_149865_P());
         }
 
@@ -34,7 +34,7 @@ public class HUDHandlerBewitched implements IWailaDataProvider {
     public List<String> getWailaHead(final ItemStack itemStack, final List<String> currentTip, final IWailaDataAccessor accessor,
                                      final IWailaConfigHandler config) {
         Block block = accessor.getBlock();
-        if (block instanceof BwBlockCrops) {
+        if (block instanceof BlockBewitchedCrops) {
             String name = DisplayUtil.itemDisplayNameShort(new ItemStack(block));
             if (name != null) {
                 if (currentTip.isEmpty()) {
@@ -68,7 +68,7 @@ public class HUDHandlerBewitched implements IWailaDataProvider {
 
     public static void register(IWailaRegistrar registrar) {
         IWailaDataProvider provider = new HUDHandlerBewitched();
-        registrar.registerStackProvider(provider, BwBlockCrops.class);
-        registrar.registerHeadProvider(provider, BwBlockCrops.class);
+        registrar.registerStackProvider(provider, BlockBewitchedCrops.class);
+        registrar.registerHeadProvider(provider, BlockBewitchedCrops.class);
     }
 }
