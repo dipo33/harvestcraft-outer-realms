@@ -1,9 +1,9 @@
-item.belladonna_seed.name=Belladonna Seed
-item.wolfsbane_seed.name=Wolfsbane Seed
-item.water_artichoke_seed.name=Water Artichoke Seed
-item.mandrake_seed.name=Mandrake Seed
-item.snow_wisp_seed.name=Snow Wisp Seed
-item.garlic_seed.name=Garlic
+item.belladonna_seeds.name=Belladonna Seeds
+item.wolfsbane_seeds.name=Wolfsbane Seeds
+item.water_artichoke_seeds.name=Water Artichoke Seeds
+item.mandrake_seeds.name=Mandrake Seeds
+item.snow_wisp_seeds.name=Snow Wisp Seeds
+item.garlic_seeds.name=Garlic
 
 item.belladonna_flower.name=Belladonna Flower
 item.wolfsbane_flower.name=Wolfsbane Flower

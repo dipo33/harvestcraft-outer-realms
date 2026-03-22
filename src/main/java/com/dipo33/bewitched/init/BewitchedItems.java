@@ -13,19 +13,19 @@ import net.minecraft.item.ItemSeeds;
 public class BewitchedItems {
 
     // Seeds
-    public static final ObjectHolder<Item> BELLADONNA_SEED = new ObjectHolder<>(() ->
+    public static final ObjectHolder<Item> BELLADONNA_SEEDS = new ObjectHolder<>(() ->
         new ItemSeeds(BewitchedBlocks.BELLADONNA_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
-    public static final ObjectHolder<Item> WOLFSBANE_SEED = new ObjectHolder<>(() ->
+    public static final ObjectHolder<Item> WOLFSBANE_SEEDS = new ObjectHolder<>(() ->
         new ItemSeeds(BewitchedBlocks.WOLFSBANE_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
-    public static final ObjectHolder<Item> WATER_ARTICHOKE_SEED = new ObjectHolder<>(() ->
+    public static final ObjectHolder<Item> WATER_ARTICHOKE_SEEDS = new ObjectHolder<>(() ->
         new ItemWaterSeeds(BewitchedBlocks.WATER_ARTICHOKE_CROP.get(), Blocks.water).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
-    public static final ObjectHolder<Item> MANDRAKE_SEED = new ObjectHolder<>(() ->
+    public static final ObjectHolder<Item> MANDRAKE_SEEDS = new ObjectHolder<>(() ->
         new ItemSeeds(BewitchedBlocks.MANDRAKE_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
-    public static final ObjectHolder<Item> SNOW_WISP_SEED = new ObjectHolder<>(() ->
+    public static final ObjectHolder<Item> SNOW_WISP_SEEDS = new ObjectHolder<>(() ->
         new ItemSeeds(BewitchedBlocks.SNOW_WISP_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> GARLIC = new ObjectHolder<>(() ->
@@ -61,12 +61,12 @@ public class BewitchedItems {
      * Registers every item declared in this class with the game's item registry.
      */
     public static void registerItems() {
-        registerItem(BELLADONNA_SEED.get(), "belladonna_seed");
-        registerItem(WOLFSBANE_SEED.get(), "wolfsbane_seed");
-        registerItem(WATER_ARTICHOKE_SEED.get(), "water_artichoke_seed");
-        registerItem(MANDRAKE_SEED.get(), "mandrake_seed");
-        registerItem(SNOW_WISP_SEED.get(), "snow_wisp_seed");
-        registerItem(GARLIC.get(), "garlic_seed");
+        registerItem(BELLADONNA_SEEDS.get(), "belladonna_seeds");
+        registerItem(WOLFSBANE_SEEDS.get(), "wolfsbane_seeds");
+        registerItem(WATER_ARTICHOKE_SEEDS.get(), "water_artichoke_seeds");
+        registerItem(MANDRAKE_SEEDS.get(), "mandrake_seeds");
+        registerItem(SNOW_WISP_SEEDS.get(), "snow_wisp_seeds");
+        registerItem(GARLIC.get(), "garlic_seeds");
 
         registerItem(BELLADONNA_FLOWER.get(), "belladonna_flower");
         registerItem(WOLFSBANE_FLOWER.get(), "wolfsbane_flower");
