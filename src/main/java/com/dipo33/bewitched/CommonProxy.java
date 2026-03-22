@@ -1,10 +1,17 @@
 package com.dipo33.bewitched;
 
-import com.dipo33.bewitched.block.BlockRegistry;
-import com.dipo33.bewitched.items.ItemRegistry;
+import com.dipo33.bewitched.init.BewitchedBlocks;
+import com.dipo33.bewitched.config.Config;
+import com.dipo33.bewitched.init.BewitchedMutations;
+import com.dipo33.bewitched.init.BewitchedRecipes;
+import com.dipo33.bewitched.init.BewitchedItems;
 import com.dipo33.bewitched.items.SeedDrops;
+import com.dipo33.bewitched.network.BewitchedNetwork;
+import com.dipo33.bewitched.network.message.EffectPlayMsg;
+import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
@@ -20,10 +27,23 @@ public class CommonProxy {
      *     the Forge pre-initialization event containing mod configuration and environment data
      */
     public void preInit(FMLPreInitializationEvent event) {
-        BlockRegistry.registerBlocks();
-        ItemRegistry.registerItems();
+        BewitchedBlocks.registerBlocks();
+        BewitchedItems.registerItems();
+        BewitchedNetwork.register();
+        this.registerClientMessages();
 
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
+    }
+
+    /**
+     * Registers client-targeted network messages using side-safe placeholder handlers.
+     *
+     * <p>Called on the server to avoid loading client-only handler classes. The registered
+     * handlers must be safe to load on server and are never expected to execute on the server.</p>
+     */
+    protected void registerClientMessages() {
+        BewitchedNetwork.registerClientMessage(EffectPlayMsg.SafeHandler.class, EffectPlayMsg.class);
+        BewitchedNetwork.registerClientMessage(UpdateFlowerPotMsg.SafeHandler.class, UpdateFlowerPotMsg.class);
     }
 
     /**
@@ -35,7 +55,11 @@ public class CommonProxy {
      *     the Forge initialization event containing mod configuration and environment data
      */
     public void init(FMLInitializationEvent event) {
+        BewitchedRecipes.init();
+        BewitchedMutations.init();
         SeedDrops.dropSeedsFromGrass();
+
+        FMLInterModComms.sendMessage("Waila", "register", "com.dipo33.bewitched.integration.waila.HUDHandlerBewitched.register");
     }
 
     /**

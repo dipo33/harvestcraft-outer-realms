@@ -1,52 +1,60 @@
-package com.dipo33.bewitched.items;
+package com.dipo33.bewitched.init;
 
 import com.dipo33.bewitched.Bewitched;
-import com.dipo33.bewitched.block.BlockRegistry;
 import com.dipo33.bewitched.data.ObjectHolder;
+import com.dipo33.bewitched.items.ItemMutandis;
+import com.dipo33.bewitched.items.ItemWaterSeeds;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 
-public class ItemRegistry {
+public class BewitchedItems {
 
     // Seeds
     public static final ObjectHolder<Item> BELLADONNA_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.BELLADONNA_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
+        new ItemSeeds(BewitchedBlocks.BELLADONNA_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> WOLFSBANE_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.WOLFSBANE_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
+        new ItemSeeds(BewitchedBlocks.WOLFSBANE_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> WATER_ARTICHOKE_SEED = new ObjectHolder<>(() ->
-        new WaterItemSeeds(BlockRegistry.WATER_ARTICHOKE_CROP.get(), Blocks.water).setCreativeTab(CreativeTabs.tabMaterials)
+        new ItemWaterSeeds(BewitchedBlocks.WATER_ARTICHOKE_CROP.get(), Blocks.water).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> MANDRAKE_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.MANDRAKE_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
+        new ItemSeeds(BewitchedBlocks.MANDRAKE_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> SNOW_WISP_SEED = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.SNOW_WISP_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
+        new ItemSeeds(BewitchedBlocks.SNOW_WISP_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> GARLIC = new ObjectHolder<>(() ->
-        new ItemSeeds(BlockRegistry.GARLIC_CROP.get(), Blocks.farmland).setCreativeTab(CreativeTabs.tabMaterials)
+        new ItemSeeds(BewitchedBlocks.GARLIC_CROP.get(), Blocks.farmland).setCreativeTab(Bewitched.CREATIVE_TAB)
     );
 
     // Crops
     public static final ObjectHolder<Item> BELLADONNA_FLOWER = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
+        new Item().setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> WOLFSBANE_FLOWER = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
+        new Item().setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> WATER_ARTICHOKE_GLOBE = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
+        new Item().setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> MANDRAKE_ROOT = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
+        new Item().setCreativeTab(Bewitched.CREATIVE_TAB)
     );
     public static final ObjectHolder<Item> ICY_NEEDLE = new ObjectHolder<>(() ->
-        new Item().setCreativeTab(CreativeTabs.tabMaterials)
+        new Item().setCreativeTab(Bewitched.CREATIVE_TAB)
+    );
+
+    // Other
+    public static final ObjectHolder<Item> MUTANDIS = new ObjectHolder<>(() ->
+        new ItemMutandis().setCreativeTab(Bewitched.CREATIVE_TAB)
+    );
+    public static final ObjectHolder<Item> MUTANDIS_EXTREMIS = new ObjectHolder<>(() ->
+        new ItemMutandis().setCreativeTab(Bewitched.CREATIVE_TAB)
     );
 
     /**
@@ -65,6 +73,9 @@ public class ItemRegistry {
         registerItem(WATER_ARTICHOKE_GLOBE.get(), "water_artichoke_globe");
         registerItem(MANDRAKE_ROOT.get(), "mandrake_root");
         registerItem(ICY_NEEDLE.get(), "icy_needle");
+
+        registerItem(MUTANDIS.get(), "mutandis");
+        registerItem(MUTANDIS_EXTREMIS.get(), "mutandis_extremis");
     }
 
     /**

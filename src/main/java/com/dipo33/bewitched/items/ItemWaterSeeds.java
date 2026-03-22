@@ -8,18 +8,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class WaterItemSeeds extends ItemSeeds {
+public class ItemWaterSeeds extends ItemSeeds {
     private final Block crop;
 
     /**
-     * Creates a WaterItemSeeds configured to place the specified crop when planted.
+     * Creates a ItemWaterSeeds configured to place the specified crop when planted.
      *
      * @param crop
      *     the Block that will be placed as the crop when this seed is planted
      * @param soil
      *     the Block representing the required soil type for planting
      */
-    public WaterItemSeeds(final Block crop, final Block soil) {
+    public ItemWaterSeeds(final Block crop, final Block soil) {
         super(crop, soil);
         this.crop = crop;
     }

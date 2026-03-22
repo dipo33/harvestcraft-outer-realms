@@ -1,6 +1,6 @@
 package com.dipo33.bewitched.block;
 
-import com.dipo33.bewitched.Config;
+import com.dipo33.bewitched.config.Config;
 import com.dipo33.bewitched.data.ObjectHolder;
 import com.dipo33.bewitched.data.Pair;
 
@@ -44,7 +44,7 @@ public class BwBlockCrops extends BlockCrops {
     private IIcon[] icons;
 
     /**
-     * Create a BwBlockCrops configured with the provided seed and crop item holders.
+     * Creates a BwBlockCrops configured with the provided seed and crop item holders.
      *
      * @param seed
      *     holder for the seed Item; must not be null
@@ -55,8 +55,8 @@ public class BwBlockCrops extends BlockCrops {
      */
     public BwBlockCrops(ObjectHolder<Item> seed, ObjectHolder<Item> crop) {
         super();
-        this.seed = Objects.requireNonNull(seed, "seed holder cannot be null");
-        this.crop = Objects.requireNonNull(crop, "crop holder cannot be null");
+        this.seed = Objects.requireNonNull(seed, "seed must not be null");
+        this.crop = Objects.requireNonNull(crop, "crop must not be null");
     }
 
     /**
@@ -86,7 +86,7 @@ public class BwBlockCrops extends BlockCrops {
      *     if {@code plantType} is null
      */
     public BwBlockCrops setPlantType(EnumPlantType plantType) {
-        this.plantType = Objects.requireNonNull(plantType, "plantType cannot be null");
+        this.plantType = Objects.requireNonNull(plantType, "plantType must not be null");
         return this;
     }
 
@@ -104,7 +104,7 @@ public class BwBlockCrops extends BlockCrops {
      *     if {@code chance} is NaN or is less than 0.0 or greater than 1.0
      */
     public BwBlockCrops addAdditionalDrops(ObjectHolder<Item> item, double chance) {
-        Objects.requireNonNull(item, "item holder cannot be null");
+        Objects.requireNonNull(item, "item must not be null");
         if (Double.isNaN(chance) || chance < 0.0D || chance > 1.0D) {
             throw new IllegalArgumentException("Chance must be between 0.0 and 1.0, got: " + chance);
         }
@@ -162,7 +162,7 @@ public class BwBlockCrops extends BlockCrops {
      * @return the Item dropped as the crop's harvest product
      */
     @Override
-    protected Item func_149865_P() {
+    public Item func_149865_P() {
         return this.crop.get();
     }
 

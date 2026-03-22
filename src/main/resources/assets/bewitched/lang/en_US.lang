@@ -11,9 +11,25 @@ item.water_artichoke_globe.name=Water Artichoke Globe
 item.mandrake_root.name=Mandrake Root
 item.icy_needle.name=Icy Needle
 
+item.mutandis.name=Mutandis
+item.mutandis_extremis.name=Mutandis Extremis
+
 tile.belladonna.name=Belladonna Crop
 tile.wolfsbane.name=Wolfsbane Crop
 tile.water_artichoke.name=Water Artichoke Crop
 tile.mandrake.name=Mandrake Crop
 tile.snow_wisp.name=Snow Wisp Crop
 tile.garlic.name=Garlic Crop
+
+tile.spanish_moss.name=Spanish Moss
+tile.glint_weed.name=Glint Weed
+tile.ember_moss.name=Ember Moss
+tile.sapling.rowan.name=Rowan Sapling
+tile.sapling.alder.name=Alder Sapling
+tile.sapling.hawthorn.name=Hawthorn Sapling
+
+itemGroup.bewitched=Bewitched
+
+bewitched.nei.mutation=Mutandis Mutations
+bewitched.nei.mutation.chance=Chance for each possible result: %s
+bewitched.nei.mutation.flower_pot=This mutation occurs within a flower pot.
