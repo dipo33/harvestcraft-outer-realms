@@ -35,6 +35,12 @@ public class CommonProxy {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
     }
 
+    /**
+     * Registers client-targeted network messages using side-safe placeholder handlers.
+     *
+     * <p>Called on the server to avoid loading client-only handler classes. The registered
+     * handlers must be safe to load on server and are never expected to execute on the server.</p>
+     */
     protected void registerClientMessages() {
         BewitchedNetwork.registerClientMessage(EffectPlayMsg.SafeHandler.class, EffectPlayMsg.class);
         BewitchedNetwork.registerClientMessage(UpdateFlowerPotMsg.SafeHandler.class, UpdateFlowerPotMsg.class);

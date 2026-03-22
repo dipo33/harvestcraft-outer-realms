@@ -17,6 +17,13 @@ public class ClientProxy extends CommonProxy {
         EffectRegistry.registerEffects();
     }
 
+    /**
+     * Registers client-targeted network messages with their real client-side handlers.
+     *
+     * <p>Overrides the common implementation to bind handlers that may reference
+     * client-only code (rendering, Minecraft client classes, etc.). These handlers
+     * must never be loaded on the server.</p>
+     */
     @Override
     protected void registerClientMessages() {
         BewitchedNetwork.registerClientMessage(EffectPlayMsgHandler.class, EffectPlayMsg.class);
