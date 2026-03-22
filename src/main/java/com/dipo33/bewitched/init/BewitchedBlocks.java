@@ -103,12 +103,6 @@ public class BewitchedBlocks {
         GameRegistry.registerBlock(block, name);
     }
 
-    private static void registerBlockWithoutItem(Block block, String name) {
-        block.setBlockTextureName(Bewitched.MODID + ":" + name);
-        block.setBlockName(name);
-        GameRegistry.registerBlock(block, null, name);
-    }
-
     private static void registerBlock(Block block, Class<? extends ItemBlock> itemclass, String name, Object... variants) {
         block.setBlockTextureName(Bewitched.MODID + ":" + name);
         block.setBlockName(name);
