@@ -12,7 +12,7 @@ import com.dipo33.bewitched.utils.ItemStackHelper;
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
-import java.awt.*;
+import java.awt.Rectangle;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
