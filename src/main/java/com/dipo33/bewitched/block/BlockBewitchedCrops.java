@@ -19,7 +19,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 
-public class BwBlockCrops extends BlockCrops {
+public class BlockBewitchedCrops extends BlockCrops {
 
     private final ObjectHolder<Item> crop;
     private final ObjectHolder<Item> seed;
@@ -44,7 +44,7 @@ public class BwBlockCrops extends BlockCrops {
     private IIcon[] icons;
 
     /**
-     * Creates a BwBlockCrops configured with the provided seed and crop item holders.
+     * Creates a BlockBewitchedCrops configured with the provided seed and crop item holders.
      *
      * @param seed
      *     holder for the seed Item; must not be null
@@ -53,7 +53,7 @@ public class BwBlockCrops extends BlockCrops {
      * @throws NullPointerException
      *     if {@code seed} or {@code crop} is null
      */
-    public BwBlockCrops(ObjectHolder<Item> seed, ObjectHolder<Item> crop) {
+    public BlockBewitchedCrops(ObjectHolder<Item> seed, ObjectHolder<Item> crop) {
         super();
         this.seed = Objects.requireNonNull(seed, "seed must not be null");
         this.crop = Objects.requireNonNull(crop, "crop must not be null");
@@ -64,11 +64,11 @@ public class BwBlockCrops extends BlockCrops {
      *
      * @param stages
      *     the number of growth stages (must be between 1 and 8 inclusive)
-     * @return this {@code BwBlockCrops} instance for method chaining
+     * @return this {@code BlockBewitchedCrops} instance for method chaining
      * @throws IllegalArgumentException
      *     if {@code stages} is less than 1 or greater than 8
      */
-    public BwBlockCrops setStages(int stages) {
+    public BlockBewitchedCrops setStages(int stages) {
         if (stages < 1 || stages > 8) {
             throw new IllegalArgumentException("Stages must be between 1 and 8, got: " + stages);
         }
@@ -81,11 +81,11 @@ public class BwBlockCrops extends BlockCrops {
      *
      * @param plantType
      *     the plant type to assign to this crop; must not be null
-     * @return this {@code BwBlockCrops} instance for method chaining
+     * @return this {@code BlockBewitchedCrops} instance for method chaining
      * @throws NullPointerException
      *     if {@code plantType} is null
      */
-    public BwBlockCrops setPlantType(EnumPlantType plantType) {
+    public BlockBewitchedCrops setPlantType(EnumPlantType plantType) {
         this.plantType = Objects.requireNonNull(plantType, "plantType must not be null");
         return this;
     }
@@ -97,13 +97,13 @@ public class BwBlockCrops extends BlockCrops {
      *     an ObjectHolder wrapping the item to add as an extra drop
      * @param chance
      *     the probability that the item will be dropped (must be between 0.0 and 1.0 inclusive)
-     * @return this {@code BwBlockCrops} instance for method chaining
+     * @return this {@code BlockBewitchedCrops} instance for method chaining
      * @throws NullPointerException
      *     if {@code item} is null
      * @throws IllegalArgumentException
      *     if {@code chance} is NaN or is less than 0.0 or greater than 1.0
      */
-    public BwBlockCrops addAdditionalDrops(ObjectHolder<Item> item, double chance) {
+    public BlockBewitchedCrops addAdditionalDrops(ObjectHolder<Item> item, double chance) {
         Objects.requireNonNull(item, "item must not be null");
         if (Double.isNaN(chance) || chance < 0.0D || chance > 1.0D) {
             throw new IllegalArgumentException("Chance must be between 0.0 and 1.0, got: " + chance);
