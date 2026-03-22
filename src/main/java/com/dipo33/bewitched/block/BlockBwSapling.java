@@ -22,20 +22,21 @@ public class BlockBwSapling extends BlockSapling {
     public static final String[] VARIANTS = {"rowan", "alder", "hawthorn"};
 
     @SideOnly(Side.CLIENT)
-    private final IIcon[] ICONS = new IIcon[VARIANTS.length];
+    private IIcon[] icons;
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(final IIconRegister reg) {
+        icons = new IIcon[VARIANTS.length];
         for (int i = 0; i < VARIANTS.length; i++) {
-            ICONS[i] = reg.registerIcon(this.getTextureName() + "_" + VARIANTS[i]);
+            this.icons[i] = reg.registerIcon(this.getTextureName() + "_" + VARIANTS[i]);
         }
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(final int side, final int meta) {
-        return ICONS[MathHelper.clamp_int(meta & 7, 0, VARIANTS.length - 1)];
+        return this.icons[MathHelper.clamp_int(meta & 7, 0, VARIANTS.length - 1)];
     }
 
     @Override
