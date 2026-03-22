@@ -15,6 +15,15 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 @Desugar
 public record Mutation(Output output, List<Source> sources) {
+    /**
+     * Checks whether any configured source matches the given block and metadata.
+     *
+     * @param block
+     *     the block to test against the mutation's sources
+     * @param meta
+     *     the metadata value to test
+     * @return {@code true} if any source matches the provided block and metadata, {@code false} otherwise
+     */
     public boolean matchesSource(Block block, int meta) {
         for (Source source : sources) {
             if (source.matches(block, meta)) {
@@ -25,7 +34,22 @@ public record Mutation(Output output, List<Source> sources) {
         return false;
     }
 
-    public static Mutation mutate(MutationPoolType type, Block block, int meta, Random rand) {
+    /**
+     * Returns a random mutation from the pool for {@code type}, excluding the one matching
+     * {@code block} and {@code meta}.
+     *
+     * @param type
+     *     the mutation pool type
+     * @param block
+     *     the block to mutate
+     * @param meta
+     *     the block metadata to mutate
+     * @param rng
+     *     the randomness source
+     * @return a different mutation from the same pool, or {@code null} if the pool is missing,
+     * has fewer than two entries, or no matching mutation exists
+     */
+    public static Mutation mutate(MutationPoolType type, Block block, int meta, Random rng) {
         var pool = MutationRegistry.getPool(type);
         if (pool == null) {
             return null;
@@ -41,7 +65,7 @@ public record Mutation(Output output, List<Source> sources) {
             return null;
         }
 
-        int resultMutationIdx = rand.nextInt(mutations.size() - 1);
+        int resultMutationIdx = rng.nextInt(mutations.size() - 1);
         if (resultMutationIdx >= match.index()) {
             resultMutationIdx++;
         }
@@ -50,21 +74,32 @@ public record Mutation(Output output, List<Source> sources) {
     }
 
     /**
-     * A source matcher: matches a block and either an exact metadata or ANY metadata (wildcard).
+     * Matches a block with either exact metadata or any metadata (wildcard).
      *
+     * @param block
+     *     the block to match
      * @param meta
-     *     null = wildcard
+     *     the metadata to match, or {@code null} to match any value
      */
     @Desugar
     public record Source(Block block, Integer meta) {
+        /**
+         * Returns whether the given block and metadata match this source.
+         */
         public boolean matches(Block b, int m) {
             return b == block && (meta == null || meta == m);
         }
 
+        /**
+         * Creates a source matching any metadata for the given block.
+         */
         public static Source anyMeta(Block b) {
             return new Source(b, null);
         }
 
+        /**
+         * Creates a source matching the exact metadata for the given block.
+         */
         public static Source exact(Block b, int meta) {
             return new Source(b, meta);
         }
@@ -72,15 +107,34 @@ public record Mutation(Output output, List<Source> sources) {
 
     public interface PlacementStrategy {
         /**
-         * Return the most appropriate meta to place this block with.
+         * Computes metadata for placement at the given position.
+         *
+         * @return the metadata value to use
          */
         int placementMeta(World world, int x, int y, int z);
 
+        /**
+         * Returns the fallback metadata when no contextual value is determined.
+         *
+         * @return the default metadata value
+         */
         int defaultPlacementMeta();
     }
 
+    /**
+     * Output definition for a mutation
+     */
     @Desugar
     public record Output(Block block, PlacementStrategy placement) {
+
+        /**
+         * Converts the output block into an {@link ItemStack} (size 1), primarily for display
+         * purposes (e.g., NEI).
+         *
+         * @return an {@code ItemStack} representing this output
+         * @throws IllegalStateException
+         *     if no item can be resolved for {@code block}
+         */
         public ItemStack asStack() {
             Item item = Item.getItemFromBlock(this.block);
             if (item == null || block instanceof BlockCrops) {
@@ -95,6 +149,16 @@ public record Mutation(Output output, List<Source> sources) {
         }
     }
 
+    /**
+     * Creates a mutation that matches exactly {@code block/meta} and produces the same block
+     * with fixed placement metadata.
+     *
+     * @param block
+     *     the source and output block
+     * @param meta
+     *     the exact metadata to match and to use for output placement
+     * @return a mutation with a single exact source and fixed-meta output
+     */
     public static Mutation primitiveMutation(final Block block, int meta) {
         return new Mutation(
             new Output(block, basicStrategy(meta)),
@@ -104,6 +168,16 @@ public record Mutation(Output output, List<Source> sources) {
         );
     }
 
+    /**
+     * Creates a mutation that matches any metadata of {@code block} and produces it
+     * with fixed placement metadata.
+     *
+     * @param block
+     *     the source and output block
+     * @param meta
+     *     the metadata to use for output placement
+     * @return a mutation with a wildcard source and fixed-meta output
+     */
     public static Mutation primitiveAnyMetaMutation(final Block block, int meta) {
         return new Mutation(
             new Output(block, basicStrategy(meta)),
@@ -113,6 +187,16 @@ public record Mutation(Output output, List<Source> sources) {
         );
     }
 
+    /**
+     * Creates a mutation for a sapling that matches both {@code meta} and {@code meta + 8}
+     * variants and produces the block with fixed placement metadata.
+     *
+     * @param block
+     *     the sapling block (source and output)
+     * @param meta
+     *     the base metadata; {@code meta + 8} is also matched
+     * @return a mutation matching both sapling variants with fixed-meta output
+     */
     public static Mutation saplingMutation(final Block block, int meta) {
         return new Mutation(
             new Mutation.Output(block, Mutation.basicStrategy(meta)),
@@ -124,7 +208,11 @@ public record Mutation(Output output, List<Source> sources) {
     }
 
     /**
-     * Fixed-meta strategy: only spawns exactly one meta.
+     * Creates a placement strategy that always returns {@code meta}.
+     *
+     * @param meta
+     *     the fixed placement metadata
+     * @return a fixed-meta placement strategy
      */
     public static PlacementStrategy basicStrategy(int meta) {
         return new PlacementStrategy() {
@@ -141,7 +229,11 @@ public record Mutation(Output output, List<Source> sources) {
     }
 
     /**
-     * Wall strategy: only spawns where a neighboring block is present.
+     * Creates a placement strategy for wall-mounted blocks.
+     *
+     * <p>Selects metadata from adjacent solid faces.</p>
+     *
+     * @return a wall-placement strategy
      */
     public static PlacementStrategy wallStrategy() {
         return new PlacementStrategy() {

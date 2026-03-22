@@ -11,6 +11,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -25,6 +27,8 @@ public class Bewitched {
     public static CommonProxy proxy;
 
     public static final CreativeTabs CREATIVE_TAB = new CreativeTabs("bewitched") {
+        @Override
+        @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
             return BewitchedItems.BELLADONNA_FLOWER.get();
         }
