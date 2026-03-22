@@ -8,7 +8,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
 
-public class BwNetwork {
+public class BewitchedNetwork {
     public static SimpleNetworkWrapper NET;
 
     private static int MESSAGE_ID = 0;

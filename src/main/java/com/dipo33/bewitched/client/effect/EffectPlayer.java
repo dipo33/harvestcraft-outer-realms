@@ -1,6 +1,6 @@
 package com.dipo33.bewitched.client.effect;
 
-import com.dipo33.bewitched.network.BwNetwork;
+import com.dipo33.bewitched.network.BewitchedNetwork;
 import com.dipo33.bewitched.network.message.EffectPlayMsg;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -23,6 +23,6 @@ public class EffectPlayer {
         NetworkRegistry.TargetPoint tp = new NetworkRegistry.TargetPoint(
             world.provider.dimensionId, x, y, z, range
         );
-        BwNetwork.NET.sendToAllAround(new EffectPlayMsg(world, effectId, x, y, z), tp);
+        BewitchedNetwork.NET.sendToAllAround(new EffectPlayMsg(world, effectId, x, y, z), tp);
     }
 }

@@ -6,7 +6,7 @@ import com.dipo33.bewitched.client.effect.EffectPlayer;
 import com.dipo33.bewitched.client.effect.Effects;
 import com.dipo33.bewitched.api.mutation.Mutation;
 import com.dipo33.bewitched.init.BewitchedItems;
-import com.dipo33.bewitched.network.BwNetwork;
+import com.dipo33.bewitched.network.BewitchedNetwork;
 import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 import com.dipo33.bewitched.sound.Sounds;
 
@@ -77,7 +77,7 @@ public class ItemMutandis extends Item {
                 world.markBlockForUpdate(pot.xCoord, pot.yCoord, pot.zCoord);
             }
 
-            BwNetwork.NET.sendToAllAround(
+            BewitchedNetwork.NET.sendToAllAround(
                 new UpdateFlowerPotMsg(pot.xCoord, pot.yCoord, pot.zCoord, pot.getFlowerPotItem(), pot.getFlowerPotData()),
                 new NetworkRegistry.TargetPoint(world.provider.dimensionId, pot.xCoord + 0.5, pot.yCoord + 0.5, pot.zCoord + 0.5, 128)
             );

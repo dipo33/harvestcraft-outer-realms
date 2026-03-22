@@ -1,7 +1,7 @@
 package com.dipo33.bewitched;
 
 import com.dipo33.bewitched.client.effect.EffectRegistry;
-import com.dipo33.bewitched.network.BwNetwork;
+import com.dipo33.bewitched.network.BewitchedNetwork;
 import com.dipo33.bewitched.network.handler.EffectPlayMsgHandler;
 import com.dipo33.bewitched.network.handler.UpdateFlowerPotMsgHandler;
 import com.dipo33.bewitched.network.message.EffectPlayMsg;
@@ -19,7 +19,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     protected void registerClientMessages() {
-        BwNetwork.registerClientMessage(EffectPlayMsgHandler.class, EffectPlayMsg.class);
-        BwNetwork.registerClientMessage(UpdateFlowerPotMsgHandler.class, UpdateFlowerPotMsg.class);
+        BewitchedNetwork.registerClientMessage(EffectPlayMsgHandler.class, EffectPlayMsg.class);
+        BewitchedNetwork.registerClientMessage(UpdateFlowerPotMsgHandler.class, UpdateFlowerPotMsg.class);
     }
 }

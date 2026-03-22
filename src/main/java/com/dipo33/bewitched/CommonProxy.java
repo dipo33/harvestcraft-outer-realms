@@ -6,7 +6,7 @@ import com.dipo33.bewitched.init.BewitchedMutations;
 import com.dipo33.bewitched.init.BewitchedRecipes;
 import com.dipo33.bewitched.init.BewitchedItems;
 import com.dipo33.bewitched.items.SeedDrops;
-import com.dipo33.bewitched.network.BwNetwork;
+import com.dipo33.bewitched.network.BewitchedNetwork;
 import com.dipo33.bewitched.network.message.EffectPlayMsg;
 import com.dipo33.bewitched.network.message.UpdateFlowerPotMsg;
 
@@ -29,15 +29,15 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         BewitchedBlocks.registerBlocks();
         BewitchedItems.registerItems();
-        BwNetwork.register();
+        BewitchedNetwork.register();
         this.registerClientMessages();
 
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
     }
 
     protected void registerClientMessages() {
-        BwNetwork.registerClientMessage(EffectPlayMsg.SafeHandler.class, EffectPlayMsg.class);
-        BwNetwork.registerClientMessage(UpdateFlowerPotMsg.SafeHandler.class, UpdateFlowerPotMsg.class);
+        BewitchedNetwork.registerClientMessage(EffectPlayMsg.SafeHandler.class, EffectPlayMsg.class);
+        BewitchedNetwork.registerClientMessage(UpdateFlowerPotMsg.SafeHandler.class, UpdateFlowerPotMsg.class);
     }
 
     /**
