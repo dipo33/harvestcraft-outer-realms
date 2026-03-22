@@ -1,7 +1,7 @@
 package com.dipo33.bewitched.config;
 
-import com.dipo33.bewitched.data.MetaBlock;
 import com.dipo33.bewitched.api.mutation.Mutation;
+import com.dipo33.bewitched.data.MetaBlock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,11 @@ public class Parsers {
             String metaText = token.substring(at + 1).trim();
 
             if (!metaText.equals("*")) {
-                meta = Integer.parseInt(metaText);
+                try {
+                    meta = Integer.parseInt(metaText);
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Invalid metadata '" + metaText);
+                }
             }
         } else {
             blockName = token.trim();
