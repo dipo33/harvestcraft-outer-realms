@@ -7,6 +7,9 @@ import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.BlockSnapshot;
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.event.ForgeEventFactory;
 
 public class ItemWaterSeeds extends ItemSeeds {
     private final Block crop;
@@ -60,17 +63,17 @@ public class ItemWaterSeeds extends ItemSeeds {
                 }
 
                 if (world.getBlock(i, j, k).getMaterial() == Material.water && world.getBlockMetadata(i, j, k) == 0 && world.isAirBlock(i, j + 1, k)) {
-                    net.minecraftforge.common.util.BlockSnapshot blocksnapshot =
-                        net.minecraftforge.common.util.BlockSnapshot.getBlockSnapshot(world, i, j + 1, k);
-                    world.setBlock(i, j + 1, k, this.crop);
-                    if (net.minecraftforge.event.ForgeEventFactory.onPlayerBlockPlace(player, blocksnapshot,
-                        net.minecraftforge.common.util.ForgeDirection.UP).isCanceled()) {
-                        blocksnapshot.restore(true, false);
-                        return itemStack;
-                    }
+                    if (!world.isRemote) {
+                        BlockSnapshot blocksnapshot = BlockSnapshot.getBlockSnapshot(world, i, j + 1, k);
+                        world.setBlock(i, j + 1, k, this.crop);
+                        if (ForgeEventFactory.onPlayerBlockPlace(player, blocksnapshot, ForgeDirection.UP).isCanceled()) {
+                            blocksnapshot.restore(true, false);
+                            return itemStack;
+                        }
 
-                    if (!player.capabilities.isCreativeMode) {
-                        --itemStack.stackSize;
+                        if (!player.capabilities.isCreativeMode) {
+                            --itemStack.stackSize;
+                        }
                     }
                 }
             }
