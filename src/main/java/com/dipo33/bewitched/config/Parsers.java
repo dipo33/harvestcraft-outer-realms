@@ -56,7 +56,7 @@ public class Parsers {
                 try {
                     meta = Integer.parseInt(metaText);
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Invalid metadata '" + metaText);
+                    throw new IllegalArgumentException("Invalid metadata '" + metaText + "'");
                 }
             }
         } else {
