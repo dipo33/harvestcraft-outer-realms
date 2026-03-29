@@ -2,6 +2,7 @@ package com.dipo33.bewitched;
 
 import com.dipo33.bewitched.init.BewitchedBlocks;
 import com.dipo33.bewitched.config.Config;
+import com.dipo33.bewitched.init.BewitchedEntities;
 import com.dipo33.bewitched.init.BewitchedMutations;
 import com.dipo33.bewitched.init.BewitchedRecipes;
 import com.dipo33.bewitched.init.BewitchedItems;
@@ -29,6 +30,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         BewitchedBlocks.registerBlocks();
         BewitchedItems.registerItems();
+        BewitchedEntities.registerEntities();
         BewitchedNetwork.register();
         this.registerClientMessages();
 
