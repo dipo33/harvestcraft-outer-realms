@@ -12,6 +12,7 @@ item.mandrake_root.name=Mandrake Root
 item.icy_needle.name=Icy Needle
 
 item.earmuffs.name=Earmuffs
+item.earmuffs.desc=Protection from Mandrakes
 
 item.mutandis.name=Mutandis
 item.mutandis_extremis.name=Mutandis Extremis
