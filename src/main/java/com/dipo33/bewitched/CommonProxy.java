@@ -21,12 +21,9 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 public class CommonProxy {
 
     /**
-     * Handle the mod's pre-initialization lifecycle event.
-     * <p>
-     * Delegates pre-initialization work (configuration loading and early registration) to the sided proxy.
+     * Performs the mod's pre-initialization: registers blocks, armor materials, items, entities, network handlers and client messages, then synchronizes configuration.
      *
-     * @param event
-     *     the Forge pre-initialization event containing mod configuration and environment data
+     * @param event the pre-initialization event providing the suggested configuration file and environment data
      */
     public void preInit(FMLPreInitializationEvent event) {
         BewitchedBlocks.registerBlocks();
