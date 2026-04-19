@@ -5,6 +5,7 @@ import com.dipo33.bewitched.init.BewitchedItems;
 
 import java.util.ArrayList;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 /**
@@ -26,6 +27,10 @@ public class BlockMandrakeCrop extends BlockBewitchedCrops {
     public ArrayList<ItemStack> getDrops(final World world, final int x, final int y, final int z, final int metadata, final int fortune) {
         ArrayList<ItemStack> drops = super.getDrops(world, x, y, z, metadata, fortune);
         if (metadata < 7 || world.isRemote) {
+            return drops;
+        }
+
+        if (world.difficultySetting == EnumDifficulty.PEACEFUL) {
             return drops;
         }
 
