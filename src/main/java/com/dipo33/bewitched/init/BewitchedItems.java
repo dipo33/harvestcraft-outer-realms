@@ -2,7 +2,7 @@ package com.dipo33.bewitched.init;
 
 import com.dipo33.bewitched.Bewitched;
 import com.dipo33.bewitched.data.ObjectHolder;
-import com.dipo33.bewitched.items.ItemEarmuffs;
+import com.dipo33.bewitched.items.armor.ItemEarmuffs;
 import com.dipo33.bewitched.items.ItemMutandis;
 import com.dipo33.bewitched.items.ItemWaterSeeds;
 

@@ -1,6 +1,7 @@
 package com.dipo33.bewitched;
 
 import com.dipo33.bewitched.client.effect.EffectRegistry;
+import com.dipo33.bewitched.client.model.ArmorModelRegistry;
 import com.dipo33.bewitched.network.BewitchedNetwork;
 import com.dipo33.bewitched.network.handler.EffectPlayMsgHandler;
 import com.dipo33.bewitched.network.handler.UpdateFlowerPotMsgHandler;
@@ -15,6 +16,7 @@ public class ClientProxy extends CommonProxy {
     public void preInit(final FMLPreInitializationEvent event) {
         super.preInit(event);
         EffectRegistry.registerEffects();
+        ArmorModelRegistry.init();
     }
 
     /**
