@@ -3,6 +3,7 @@ package com.dipo33.bewitched;
 import com.dipo33.bewitched.client.effect.EffectRegistry;
 import com.dipo33.bewitched.client.effect.entity.render.RenderMandrake;
 import com.dipo33.bewitched.client.model.ArmorModelRegistry;
+import com.dipo33.bewitched.client.sound.ClientSoundHandler;
 import com.dipo33.bewitched.entity.EntityMandrake;
 import com.dipo33.bewitched.entity.model.ModelMandrake;
 import com.dipo33.bewitched.network.BewitchedNetwork;
@@ -22,6 +23,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(event);
         EffectRegistry.registerEffects();
         ArmorModelRegistry.init();
+        ClientSoundHandler.init();
     }
 
     @Override
