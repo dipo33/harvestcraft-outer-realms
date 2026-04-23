@@ -20,6 +20,9 @@ public class ClientSoundHandler {
     private boolean isWhiteListedSound(String name) {
         return name.startsWith("gui.");
     }
+    private boolean isBlackListedSound(String name) {
+        return name.startsWith("records.") || name.startsWith("music_disc.");
+    }
 
     private ISound applyMuffling(PlaySoundEvent17 event) {
         ISound original = event.result;
@@ -50,6 +53,11 @@ public class ClientSoundHandler {
             }
 
             if (isWhiteListedSound(name)) {
+                return;
+            }
+
+            if (isBlackListedSound(name)) {
+                event.result = null;
                 return;
             }
 
